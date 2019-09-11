@@ -1,0 +1,32 @@
+
+2019.9.11
+1、Android开发的两种方式。Eclipse + ADT + Android SDK。 或者使用Android Studio开发。
+2、Android项目结构。
+
+    .gradel和.idea自动生成的文件夹，不用管。
+    app，项目的主要文件加。
+        build，存放编译时候生成的文件，不用关心。
+        libs，存放项目中使用的第三方jar包。该包下的内容会自动添加到构建路径中去。
+        src，资源文件。
+            androidTest，编写测试代码。
+            main，主要文件。
+                java，存放java代码。
+                res，存放资源文件。存放图片、图标、布局、配置等。
+                    drawable、存放图片。
+                    layout、存放布局。
+                    menu，以前有物理按键的时候会用到。
+                    mimap、存放app图标。
+                    values、存放字符串、样式、颜色等配置。
+            AndroidManifest.xml，项目的配置文件。
+         .gitignore，版本控制的忽略文件。
+         app.iml，自动生成，不需要关系。
+         build.gradle（和xcode中，info.plist很想）， app模块中gradel构建版本，里面有很多gradel配置项。包括版本号、appid等。
+         proguard-rules.pro， 用于代码混淆的规则。
+     gradle，用于构建版本的。
+     .gitignore，版本控制中忽略文件。
+     local.properties， 指定Android SDK的路径。
+     settings.gradle，指定项目中引入的模块。
+
+  从上面的目录结构发现，在app目录下和整个项目的目录下都有共同的文件，比如.gitinignor、build.gradle、xx.iml等。其实我们可以理解为，
+  xcode中，project和target的关系。app目录下，就相当于项目的一个target。所以作用域，我们也要了解。
+3、构建apk。Build->Generate Signed Bundle/Apk。 其中涉及到签名秘钥.jks文件。
