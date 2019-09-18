@@ -16,7 +16,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets{
+        main{
+            res.srcDirs = [
+                    'src/main/res',
+                    'src/main/res/layouts/main',
+                    'src/main/res/layouts/constraintsLayout',
+                    'src/main/res/layouts/viewLayout'
+            ]
+        }
+    }
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

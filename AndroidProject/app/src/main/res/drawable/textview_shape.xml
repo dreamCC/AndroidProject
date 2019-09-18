@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!--shape表示其样式-->
+
+    <!--填充色-->
+    <solid android:color="#ea66a6"/>
+
+    <!--圆角：当然我们可以设置详细的各个圆角-->
+    <corners android:radius="10dp" />
+
+    <!--边框-->
+    <stroke
+        android:color="#00ae9d"
+        android:width="2dp"
+        android:dashGap="5dp"
+        android:dashWidth="10dp"
+        />
+
+    <!--内边距。该属性是在空间gravity设置完成后，再次作用于控件的-->
+    <padding
+        android:left="10dp"/>
+
+    <!--gradient渐变色。几个重要属性，
+    type：类型，liner，radial（放射），swap（扫面）
+    color：设置颜色。
+    angle：旋转角度，默认是从左到右。注意只能设置90、180、270。
+    centerx/centery: 设置中心点位置。默认0.5 0.5-->
+    <gradient
+        android:type="linear"
+        android:startColor="#b22c46"
+        android:centerColor="#afb4db"
+        android:endColor="#007d65"
+        android:angle="180"
+        android:centerX="0.25"
+        android:centerY="0.25"
+        />
+
+</shape>
