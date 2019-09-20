@@ -122,6 +122,26 @@
 3、ImageButton。src设置资源。继承ImageView。
 4、RadioButton。配合RadioGroup使用。 设置图片，button = "@null" // 屏蔽默认效果。 drawableLeft 添加drawAble样式。
 
+2019.9.19
+1、drawable 自定义backgroud。常见控件shape、selector|item、bitmap（图片）。RadioButton中，selector其实是checked。
+2、ImageView，中src对应的image，其中scaleType能够控制显示。
+    其中fitxx会是图片进行缩放后，不超过ImageView的情况下添加。
+    这个和centerxx是不同的。
+3、ToggleButton。textOn、TextOff的使用。
+4、注意，自定义drawable的使用场景。
+
+2019.9.20
+1、Switch的使用。可以设置thumb、track的样式。
+2、ProgressBar可以是圆环或者是线性的。
+3、SeekBar类似ios中，Slide。 其样式通过drawable来进行设置。使用Layer-list 注意需要通过设置backgroud、seconderayProgress、progress来实现。
+4、RatingBar，间接继承progressBar。
+5、Constraints在性能和灵活方面都是优于RelativeLayout。可以配合Barrier（设置栅栏）、Group（便于隐藏）、Placehold（占位）、GuidLine（辅助线）。
+    其gone的使用，也就是当相对控件gone的时候，其显示方式。
+
+
+
+
+
 
 
 

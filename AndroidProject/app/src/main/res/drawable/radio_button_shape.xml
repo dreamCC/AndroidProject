@@ -2,12 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:state_checked="true"
-        android:drawable="@drawable/wdjl"
-        >
+        android:color="#007d65"/>
 
-    </item>
+    <item android:state_checked="false"
+        android:color="#f26522"/>
 
-    <item android:state_checked="false" android:drawable="@drawable/logind">
 
-    </item>
 </selector>

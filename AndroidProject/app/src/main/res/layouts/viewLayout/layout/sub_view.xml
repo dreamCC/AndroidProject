@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageV"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/image1"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logind"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/imageV"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioBtn1"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:text="男"
+            android:textSize="20dp"
+            android:textColor="@drawable/radio_button_shape"
+            />
+
+        <RadioButton
+            android:id="@+id/radioBtn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="女"
+            android:textColorHighlight="@color/colorAccent"
+            android:textColor="@drawable/radio_button_shape"
+            />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup"
+        android:orientation="vertical">
+        <CheckBox
+            android:id="@+id/ad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="奥迪"
+            android:textSize="20dp"/>
+        <CheckBox
+            android:id="@+id/bc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="奔驰"
+            android:layout_marginTop="20dp"/>
+        <CheckBox
+            android:id="@+id/bm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="宝马"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"/>
+    </LinearLayout>
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/checkbox"
+        android:layout_toRightOf="@+id/checkbox"
+        android:layout_marginLeft="20dp"
+        android:textOff="关"
+        android:textOn="开"
+        android:textSize="20dp"
+        android:textColor="@drawable/radio_button_shape"/>
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toggleButton"
+        android:layout_below="@+id/toggleButton"
+        android:layout_marginTop="20dp"
+        android:textOn="关"
+        android:textOff="开"
+        android:showText="true"
+        android:trackTint="#f05b72"
+        />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkbox"
+        android:layout_marginTop="20dp"
+        style="@android:style/Widget.ProgressBar.Small"
+        />
+
+    <ProgressBar
+        android:id="@+id/pb2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progressBar"
+        android:layout_marginTop="20dp"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:max="100"
+        android:progress="20"
+        />
+
+    <ProgressBar
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pb2"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_marginTop="20dp"
+        android:indeterminate="true"
+        />
+
+
+</RelativeLayout>
