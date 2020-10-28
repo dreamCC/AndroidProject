@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="false"
+        android:drawable="@drawable/wdjl">
+        <shape >
+            <solid android:color="#d71345"/>
+        </shape>
+    </item>
+
+    <item android:state_selected="true" >
+        <shape >
+            <solid android:color="#1d953f"/>
+        </shape>
+    </item>
+</selector>

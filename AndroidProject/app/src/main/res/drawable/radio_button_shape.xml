@@ -2,10 +2,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:state_checked="true"
-        android:color="#007d65"/>
+        android:drawable="@drawable/wdjl"/>
 
     <item android:state_checked="false"
-        android:color="#f26522"/>
-
+        android:drawable="@drawable/image0"/>
 
 </selector>

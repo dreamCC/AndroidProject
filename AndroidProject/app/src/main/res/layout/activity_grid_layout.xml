@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".viewGroup.GridLayoutActivity">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:rowCount="6"
+        android:columnCount="4"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_columnSpan="4"
+            android:layout_rowSpan="2"
+            android:text="0"
+            android:gravity="right"
+            android:textSize="50sp"
+            android:background="#f7acbc"
+            android:layout_gravity="fill"
+            />
+
+        <Button
+            android:layout_gravity="fill"
+            android:layout_columnSpan="2"
+            android:text="回退" />
+
+        <Button
+            android:layout_gravity="fill"
+            android:layout_columnSpan="2"
+            android:text="清空"/>
+
+        <Button android:text="+"/>
+        <Button android:text="1"/>
+        <Button android:text="2"/>
+        <Button android:text="3"/>
+        <Button android:text="-"/>
+        <Button android:text="4"/>
+        <Button android:text="5"/>
+        <Button android:text="6"/>
+        <Button android:text="*"/>
+        <Button android:text="7"/>
+        <Button android:text="8"/>
+        <Button android:text="9"/>
+        <Button android:text="/"/>
+        <Button android:text="."/>
+        <Button android:text="0"/>
+        <Button android:text="="/>
+
+
+    </GridLayout>
+
+
+</android.support.constraint.ConstraintLayout>

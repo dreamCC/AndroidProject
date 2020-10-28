@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!--正常-->
+    <item android:state_pressed="false">
+        <shape>
+            <solid android:color="#f05b72"/>
+        </shape>
+    </item>
+
+    <!--点击-->
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#1d953f"/>
+            <stroke android:color="#121a2a"
+                android:width="2dp"
+                android:dashWidth="20dp"
+                android:dashGap="5dp"/>
+        </shape>
+    </item>
+</selector>

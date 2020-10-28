@@ -3,12 +3,60 @@
     package="com.example.androidproject">
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".listView.StaggerRecyclerViewActivity"></activity>
+        <activity android:name=".listView.GridRecyclerViewActivity" />
+        <activity android:name=".listView.HorizonRecyclerViewActivity" />
+        <activity android:name=".listView.RecyclerViewActivity" />
+        <activity android:name=".listView.ListViewActivity" />
+        <activity android:name=".listView.GridViewActivity" />
+        <activity android:name=".listView.ListViewMainActivity" />
+        <activity android:name=".viewGroup.PercentLayoutActivity" />
+        <activity android:name=".systermUI.MenuActivity" />
+        <activity android:name=".systermUI.PopUpWindowActivity" />
+        <activity android:name=".systermUI.DialogActivity" />
+        <activity android:name=".systermUI.DateTime2Activity" />
+        <activity android:name=".systermUI.DateTimeActivity" />
+        <activity android:name=".systermUI.ProgressBarActivity" />
+        <activity android:name=".systermUI.SwitchActivity" />
+        <activity android:name=".systermUI.ToggleButtonActivity" />
+        <activity android:name=".systermUI.CheckBoxActivity" />
+        <activity android:name=".systermUI.RadioButtonActivity" />
+        <activity android:name=".systermUI.ImageViewActivity" />
+        <activity android:name=".systermUI.ButtonActivity" />
+        <activity android:name=".systermUI.TextViewActivity" />
+        <activity android:name=".systermKnowledge.LaunchModeActivity" />
+        <activity android:name=".systermKnowledge.LifeRecycleActivity" />
+        <activity android:name=".systermKnowledge.IntentExtraActivity" />
+        <activity
+            android:name=".systermKnowledge.SystemKnowledgeActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.Sy1" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".systermKnowledge.IntentActivity" />
+        <activity android:name=".viewGroup.ConstraintLayoutActivity" />
+        <activity android:name=".viewGroup.RelativeLayoutActivity" />
+        <activity android:name=".viewGroup.FrameLayoutActivity" />
+        <activity android:name=".viewGroup.AbsoluteLayoutActivity" />
+        <activity android:name=".viewGroup.GridLayoutActivity" />
+        <activity android:name=".viewGroup.TableLayoutActivity" />
+        <activity android:name=".viewGroup.LineLayoutActivity" />
+        <activity android:name=".viewGroup.ViewGroupActivity" />
+        <activity
+            android:name=".systermUI.EditTextActivity"
+            android:windowSoftInputMode="" />
+        <activity android:name=".systermUI.ToastActivity" />
+        <activity android:name=".systermUI.SystemUIActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -20,5 +68,8 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

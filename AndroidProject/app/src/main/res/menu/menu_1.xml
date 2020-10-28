@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--最常见的设置方法-->
+    <item android:title="标题" />
+
+    <item android:title="带子标题"/>
+
+    <item android:title="显示"
+        app:showAsAction="always"
+        android:icon="@drawable/wdjl"/>
+
+
+    <item android:title="单选菜单"
+        app:showAsAction="withText">
+
+        <menu >
+            <item android:id="@+id/single_menu_01"
+                android:title="单选按钮01"
+                android:checked="true"/>
+            <item android:id="@+id/single_menu_02"
+                android:title="单选按钮02"/>
+            <item android:id="@+id/single_menu_03"
+                android:title="单选按钮03"/>
+        </menu>
+
+    </item>
+
+    <item android:title="多选"
+        app:showAsAction="never">
+        <menu >
+            <group android:checkableBehavior="all">
+                <item android:title="多选按钮01"/>
+                <item android:title="多选按钮02"/>
+                <item android:title="多选按钮03"/>
+            </group>
+        </menu>
+
+    </item>
+</menu>

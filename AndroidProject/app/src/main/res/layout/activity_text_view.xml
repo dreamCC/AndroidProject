@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".systermUI.TextViewActivity"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="TextView"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:background="#ef5b9c" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:text="Shadow"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:background="#f47920"
+
+        android:shadowDx="10.0"
+        android:shadowDy="10.0"
+        android:shadowColor="#d71345"
+        android:shadowRadius="3.0"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:text="textview_shape_1"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:background="@drawable/textview_shape_1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:text="textview_shape_2"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:background="@drawable/textview_shape_2"/>
+
+    <!--设置图片-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:text="drawable"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:background="@drawable/textview_shape_2"
+        android:drawableTop="@drawable/wdjl"
+        android:drawablePadding="1dp"/>
+
+    <!--autoLink-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:text="https://www.baidu.com"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:background="@drawable/textview_shape_2"
+        android:autoLink="web" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:text="自动换行通过 android:singleLine 设置，默认为 false。"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:lines="1"
+        android:ellipsize="end"
+        android:background="@drawable/textview_shape_2" />
+</LinearLayout>
+

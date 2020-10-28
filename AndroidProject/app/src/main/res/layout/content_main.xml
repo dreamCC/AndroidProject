@@ -2,19 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity"
-    tools:showIn="@layout/activity_main"
-
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:divider="#eb1e1e"
 
+
+    android:dividerPadding="0dp"
     android:orientation="vertical"
 
-    android:divider="#eb1e1e"
     android:showDividers="end"
-    android:dividerPadding="0dp">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
 
 
     <FrameLayout
@@ -27,17 +26,14 @@
         <View
             android:layout_width="200dp"
             android:layout_height="180dp"
-            android:background="#726930"
-            />
+            android:background="#726930" />
 
         <View
             android:layout_width="180dp"
             android:layout_height="160dp"
-            android:background="#f05b72"/>
+            android:background="#f05b72" />
 
     </FrameLayout>
-
-
 
 
     <RelativeLayout
@@ -48,99 +44,91 @@
             android:id="@+id/centerView"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="#5f3c23"
-            android:layout_centerInParent="true">
-        </TextView>
+            android:layout_centerInParent="true"
+            android:background="#5f3c23"></TextView>
 
         <TextView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_toLeftOf="@+id/centerView"
             android:layout_alignTop="@+id/centerView"
-            android:background="#ef5b9c"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/centerView"
+            android:background="#ef5b9c" />
 
         <TextView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="#faa755"
             android:layout_above="@+id/centerView"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            />
+            android:background="#faa755" />
 
         <TextView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_toRightOf="@+id/centerView"
-            android:background="#5c7a29"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/centerView"
+            android:background="#5c7a29" />
 
         <TextView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="#d2553d"
             android:layout_below="@+id/centerView"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:background="#d2553d" />
 
     </RelativeLayout>
 
 
     <TableLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#b7ba6b"
-        android:collapseColumns=""
-        android:layout_height="match_parent">
+        android:collapseColumns="">
 
         <TableRow>
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:background="#f58f98"
-                android:text="TableLayout"
-                android:textColor="#224b8f"
-                android:textSize="20sp"
-                android:lines="1"
-                android:ellipsize="end"
-                />
 
             <TextView
-                android:layout_marginLeft="10dp"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:background="#f58f98"
+                android:ellipsize="end"
+                android:lines="1"
                 android:text="TableLayout"
                 android:textColor="#224b8f"
-                android:textSize="20sp"
-                android:lines="1"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:background="#f58f98"
                 android:ellipsize="end"
-                />
+                android:lines="1"
+                android:text="TableLayout"
+                android:textColor="#224b8f"
+                android:textSize="20sp" />
 
         </TableRow>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:background="#69541b"
             android:layout_marginTop="10dp"
-            android:text="国防色"
-            />
+            android:background="#69541b"
+            android:text="国防色" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:background="#77ac98"
-            android:text="千草色"
             android:gravity="center"
-            />
+            android:text="千草色" />
 
     </TableLayout>
-
-
-
 
 
 </LinearLayout>

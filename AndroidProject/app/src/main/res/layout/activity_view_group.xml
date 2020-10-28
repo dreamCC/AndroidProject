@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".viewGroup.ViewGroupActivity"
+    android:padding="10dp">
+
+
+    <Button
+        android:id="@+id/btn_1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:text="LineLayout"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_1"
+        android:textAllCaps="false"
+        android:text="TableLayout"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_3"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_2"
+        android:text="FrameLayout"
+        android:textSize="20sp"
+        android:textAllCaps="false"/>
+    
+    <Button
+        android:id="@+id/btn_4"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_3"
+        android:text="GridLayout"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/btn_5"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_4"
+        android:textSize="20sp"
+        android:text="AbsoluteLayout"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btn_6"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_4"
+        android:layout_height="60dp"
+        android:text="RelativeLayout"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/btn_7"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_6"
+        android:layout_height="60dp"
+        android:text="PercentLayout"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
+
+</android.support.constraint.ConstraintLayout>

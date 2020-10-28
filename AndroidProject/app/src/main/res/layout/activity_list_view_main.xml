@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".listView.ListViewMainActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_1"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:textSize="20dp"
+        android:text="ListView"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btn_2"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="GridView"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/btn_3"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="RecycleView"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/btn_4"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="HorizonRecycleView"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/btn_5"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="GridRecycleView"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/btn_6"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="StaggerRecyclerView"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
+
+</LinearLayout>

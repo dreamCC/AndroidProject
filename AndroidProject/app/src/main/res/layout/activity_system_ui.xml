@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".systermUI.SystemUIActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <Button
+                android:id="@+id/btn_1"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:textSize="20dp"
+                android:text="ToastActivity"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/btn_2"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="EditText"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_3"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="TextView"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_4"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="Button"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_5"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="ImageView"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_6"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="RadioButton"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_7"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="CheckBox"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_8"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="ToggleButton"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_9"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="Switch"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_10"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="ProgressBar"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_11"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="DateTime 上"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_12"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="DateTime 下"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_13"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="AlertDialog"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_14"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="PopUpWindow"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_15"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="Menu"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_16"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="ListView"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btn_17"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:text="GridView"
+                android:textAllCaps="false"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

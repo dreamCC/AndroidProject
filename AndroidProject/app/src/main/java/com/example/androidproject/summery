@@ -1,0 +1,481 @@
+9.21
+1、jvm和dvm。
+    jvm是java虚拟机，也就是java程序想要运行需要基于该虚拟机，其作用是将 .java->.class->.jar
+        注意jdk（java development kit）、jre（java runtime environment）和jvm（java virtual machine）的区别。
+        在JDK的安装目录里你会发现有jre目录，jre目录中有文件夹bin和lib,在这里可以认为bin里的文件就是jvm，他们很多都是.exe/.dll结尾（windows下），
+        所以它是可执行程序(JVM)，lib中则是jvm工作所需要的类库，可以看到很多.jar文件，而jvm和lib合起来就是jre了。
+        所以，在你写完java程序编译成.class之后，把.class文件和jre一起打包，然后再写一个用来引导程序启动的cmd文件，再一起打包，
+        这样你就可以在其他没有安装jre的windows运行你写程序了（jre里有运行.class的java.exe）。
+    dvm是android的dalvik虚拟机，也就是android程序的运行时基于该虚拟机，起作用是将.java->.class->.dex，相比jvm的好处是将文件进行整合和处理。
+
+2、art模式和dvm模式的区别。传统android程序运行dvm模式下，也就是程序运行需要借用dvm进行java程序到机器语言的过程。而art模式会将android程序提前进行
+    预编译转换成机器语言，所以占用内存会增加，但是运行速度会变快。
+
+9.22
+1、View和ViewGroup的概念。android的UI以及界面的层次结构和ios还是有区别的。ios所有的ui控件都是继承自UIView，而android分为View和ViewGroup两类，
+    ViewGroup继承自View。
+
+9.24
+1、LineLayout，线性布局。有点像Flutter中的Column和Row。其中重要的属性，weight、divide、layout_gravity和orientation。
+2、TableLayout，注意配合TableRow使用。TableLayout是从上往下排列，TableRow是从左往右排列。其中重要的几个属性。xxxxColumns。
+
+9.29
+1、FrameLayout，帧布局的特点就是开辟一块控件，往里面放控件默认是会放在左上角，无法定位，所以使用场景不多。
+
+10.9
+1、RelativeLayout，相对布局现在用的比较少。需要注意几个属性:
+    根据父容器：
+        layout_alignParent-xxx 相对于父容器上、下、左、右对齐。
+        layout_center-xxx 相对于父容器水平居中、垂直居中、整体居中。
+
+    根据兄弟组件：
+        layout_toLeftOf 参考左边
+        layout_toRightOf 参考右边
+        layout_above     上边
+        layout_below     下边
+        layout_align-xx  xx方向对齐
+
+2、ConstraintLayout，现在使用表多的相对布局。相对于RelativeLayout，但是又比RelativeLayout性能更好，使用更加方便。
+
+10.10
+1、Context，上线文。首先我们应该明白其继承关系。
+    Context直接子类，ContextWrapper（Context的封装），ContextImpl（Context的实现）。
+        ContextWrapper有三个子类，ContextThemeWrapper、Service和Application。 其中ContextThemeWrapper的子类是Activity。
+        我们常接触的就有Application、Service和Activity。所以他们都属于Context的子类，而Context功能的具体实现是由ContextImpl类实现的。
+        因此大多数场景这三种Context是可以通用的。但是也有一些特殊情况，比如Dialog和Activity是不允许凭空出现的，必须要形成返回栈（这个和ios有点类似），
+        因此这些场景就必须使用Activity类型的Context。
+    所以一个应用程序的Context = Activity数量 + Service数量 + 1（Application）。注意ios中UIApplication也是一个（在UIApplicationMain函数中创建）。
+
+    我们查看ContextWrapper源码就可以发现，其实内部有个Context mBase; 变量。而该变量是通过attachBaseContext(Context base)方法进行赋值的，而该
+    方法由系统调用，并且参数是ContextImpl 对象。而ContextWrapper内部所有方法，都是通过mBase进行获取，所以我们说ContextWrapper内所有功能都是有ContextImpl
+    实现的。 注意：其内部方法调用顺序： ContextWrapper() -> attachBaseContext(Context base) -> onCreate()。 所以我们要使用context的一些方法需要
+    在onCreate方法里面调用最好。
+
+    Context的使用场景：
+    1、调用context的一些方法，比如startActivity，访问资源等。
+    2、调用一些方法的时候需要作为参数，比如Toast、Dialog等。
+
+2、Application。一个app只有一个application，其获取方式：
+    如果activity内，通过getApplication、getApplicationContext获取。
+    service可以通过ctx.getApplicationContext获取。
+
+3、注意this和Activity.this的区别。 都是获取当前类的对象，this和ios中的self是一样的。
+    xxx.this的调用前提是必须在xxx类中调用，不然会报xxx is not a enclosing class。
+
+4、Intent。首先我们需要知道Intent包括显示Intent和隐式Intent。
+     显示Intent很简单，直接调用就ok。
+
+     隐式Intent。
+     隐式顾名思义是不指定Activity，而是通过设置Action、Data、Category，让系统来筛选适合的Activity。
+     筛选是根据所有的<intent-filter>来进行筛选。
+     在manifest中对Activity进行intent-filter 进行配置。
+     <action android:name="android.intent.action.Sy1"/>
+     <category android:name="android.intent.category.DEFAULT"/>
+     注意必须设置action和category。
+
+     Intent有7大属性。Action（动作）、Category（类别）、Data（数据）、Type（数据类型）、
+     Component（组件）、Extra（扩展信息）、Flag（标志位）。最常用的Action和Data。
+
+
+     Action：表示动作的意图。系统提供了很多action。
+     常见的ACTION_CALL、ACTION_DIAL两者间有区别 打电话。
+     ACTION_SENDTO 发短信。
+     ACTION_VIEW  打开网页。
+
+     Category：表示动作的类别。
+     常见的Category_Default， 如果要隐式启动Activity，需要将category设置成default。
+     CATEGORY_LAUNCHER， 启动的第一个Activity。
+
+     Type： 指定数据类型。
+     一般Intent的数据类型能够数据本身进行判断，但是通过设置这个属性，可以强制采用显示指定而不用进行推导。
+
+     Component：目的组件
+     指定Intent的目标组件名称，当指定了这个属性后，系统将跳过匹配其他属性，而直接匹配这个属性来启动对应的组件。
+
+     Extra：扩展信息
+     Intent可以携带的额外 key-value 数据，你可以通过调用putExtra()方法设置数据，每一个 key对应一个 value数据。
+     你也可以通过创建 Bundle对象来存储所有数据，然后通过调用putExtras()方法来设置数据。
+
+     Flag：期望这个意图的运行模式
+     用来指示系统如何启动一个Activity，可以通过setFlags()或者addFlags()可以把标签flag用在Intent中。
+
+     总的来说打开系统的一些app都是基于Intent实现的。而ios是通过UIApplication来进行的。
+
+
+10.12
+1、生命周期。
+    onCreate
+    onRestart // 这个方法调用的特殊性
+    onStart
+    onResume
+    onPause
+    onStop(onStop是否调用还要看Activity是否显示在栈上面)
+    onDestroy
+
+2、启动模式。launchMode：主要有四种
+    stander，标准模式，也是默认的模式，通过推栈的方式进行。
+    singleTop，当设置该模式的Activity在栈顶的时候，如果在进行startActivity的时候，将不会重新开启。
+    singleTask，主义和singleTop的区别，也就是如果设置该模式的Activity在task栈中，将不会重新创建新的activity。
+        类似ios中popTo_xxx返回指定的vc。
+    singleInstance，该模式的特点就是，将设置该模式的activity放置在新的task栈中，所以当今出现多层activity的时候，点击返回没在同一个栈
+    中将不会出现。
+
+
+3、退出程序。
+
+    Java中byte也是基础数据类型，表示字节。有8位二进制表示。
+
+4、TextView。
+    常见属性：
+    text、textSize、textStyle、gravity、text-xxxx。
+
+    阴影：shadowRadius 也就是阴影的模糊程度，不设置则没有效果。
+        shadowDx, shadowDy x\y轴偏移
+        shadowColor 阴影颜色。
+
+    边框样式： 需要编写drawable资源文件。
+    <shape> 标签里面的元素并不多：
+    <solid> 填充色。
+    <corners> 圆角。
+
+    drawable属性来进行图片设置。
+
+    autoLink属性，可以对内容进行识别。
+
+    ellipsize省略号位置。 和ios中lineBreakMode控制的一样效果。
+
+
+10.13
+1、EditText，输入框。继承自TextView。
+        ios的输入框UITextField: UIControl， UITextView: UIScrollView。
+        flutter直接是TextField。
+
+    常用的属性：
+    hint: 占位文字
+    textColorHint: 占位颜色
+    inputType: 键盘样式。 有很多样式，常用的password密码样式。 这点和ios有点区别，ios通过isSecuryEntry控制。
+
+    selectAllOnFocus： 当获取焦点的时候，宣布选中。
+
+    lines: 控制行数。默认是多行，类似ios中的UITextView，如果要是一行需要设置该属性，注意：设置单行时候需要配合inputType因为默认inputType
+        是多行输入的。当然也可以借助singleLines属性，虽然该属性以及废弃。
+    maxLines/minLines： 最多或者最少行。
+
+    关于键盘，可以通过editText.requestFocus或者是clearFocus来进行键盘的显示和隐藏。
+    Activity的 windowSoftInputMode属性，【一】当有焦点产生时，软键盘是隐藏还是显示【二】是否减少活动主窗口大小以便腾出空间放软键盘。
+
+2、SpannableString 富文本，类似ios中NSAttributeString。
+
+3、Button的样式控制，以及点击事件的控制需要通过Drawable资源文件来进行出来。
+    关于Button的继承关系：
+    Button->TextView->View->Object
+    Button的直接子类ComponentButton，间接子类CheckBox、RadioButton、Switch、ToggleButton。
+
+    Button常用属性并不多。其点击样式需要通过xml文件来进行配置。根节点是<selector>， 子节点是<item>
+    item中:
+    drawable:引用的Drawable位图,我们可以把他放到最前面,就表示组件的正常状态~
+    state_pressed:控件是否被按下
+    state_selected:控件是否被选择,针对有滚轮的情况。这些事最常用的。
+
+
+4、注意visible属性的三个值的关系。 gone（隐藏并且不会占用空间）、invisible（隐藏但会占用空间）、visible。
+
+5、ImageButton是继承自ImageView的。能够展示图片。
+
+6、ImageView。ImageView中src和background的区别。
+    src是表示内容，有图片，那么图片不会进行拉伸。
+    background如果内部有图片会对图片进行拉伸。
+    scaleType缩放类型。类似ios中contentModel。
+        fitXY:对图像的横向与纵向进行独立缩放,使得该图片完全适应ImageView,但是图片的横纵比可能会发生改变
+        fitStart:保持纵横比缩放图片,知道较长的边与Image的编程相等,缩放完成后将图片放在ImageView的左上角
+        fitCenter:同上,缩放后放于中间;
+        fitEnd:同上,缩放后放于右下角;
+        center:保持原图的大小，显示在ImageView的中心。当原图的size大于ImageView的size，超过部分裁剪处理。
+        centerCrop:保持横纵比缩放图片,知道完全覆盖ImageView,可能会出现图片的显示不完全
+        centerInside:保持横纵比缩放图片,直到ImageView能够完全地显示图片
+        matrix:默认值，不改变原图的大小，从ImageView的左上角开始绘制原图， 原图超过ImageView的部分作裁剪处理
+
+    maxHeight:
+    maxWidth:
+    adjustViewBounds: 当设置最大宽和最大高的时候，如果设置该属性表示调整缩放比例。
+
+7、RadioButton。注：ios是没有该控件的。一般用于单选框。
+    RadioButton是继承自ComponentButton extends Button。
+    当单个使用的时候，如果是check = true的时候，其状态将不再改变。
+
+    当实现单选效果，可以配合RadioGroup使用。RadioGroup是继承自LineLayout的。
+    常用的几个方法：
+    group.getChildCount()。 获取单选数量
+    getChildAt(i)。根据索引值获取我们的单选按钮
+    isChecked( ):判断按钮是否选中
+
+    如果想要修改样式可以通过：button、drawableXx、paddingXx来进行控制。
+
+8、CheckBox。注：ios 没有该控件。一般用于复选框。
+    CheckBox和RadioButton很像，也是继承自ComponentButton extends Button。
+
+    如果想要修改样式可以通过：button、drawableXx、paddingXx来进行控制。
+    配合xml文件进行设置。
+    如果不想要系统的按钮。可以通过button = "@null" 进行设置。
+
+9、ToggleButton。同样继承ComponentButton extends Button。
+    能设置的属性只有三个。
+    textOn:
+    textOff:
+    disableAlpha:
+
+10、Switch。同样继承ComponentButton extends Button。
+    注意：直接或者间接继承Button的，都可以通过xml来进行资源文件的设置。
+
+
+    android:showText：设置on/off的时候是否显示文字,boolean
+    android:textOff：按钮没有被选中时显示的文字
+    android:textOn：按钮被选中时显示的文字
+    这是三个属性能控制thumb上面的文字。
+
+    android:textStyle：文字风格，粗体，斜体写划线那些
+    android:splitTrack：是否设置一个间隙，让滑块与底部图片分隔,boolean
+    android:switchMinWidth：设置开关的最小宽度
+    android:switchPadding：设置滑块内文字的间隔
+    android:switchTextAppearance：设置开关的文字外观，暂时没发现有什么用...
+    android:track：底部的图片
+    android:thumb：滑块的图片
+
+    像track和thumb属性很像ios中的UISwitch。
+
+
+10.14
+1、setOnClickListen是View的一个方法。
+
+2、ProgressBar继承自View。
+    其直接子类AbsSeekBar和ContentLoadingProgressBar。 其中AbsSeekBar的子类有SeekBar和RatingBar。
+    默认是圆形进度条，而且有动画效果。类似ios中UIActivityIndicatorView : UIView。 注意和UIActivityViewController的区别。
+
+    当然可以设置成线性的。这个时候类似ios中UIProgressView : UIView。
+
+    重要属性。
+    style 设置样式
+    android:indeterminate：如果设置成true，则进度条不精确显示进度。而是现实水平方向转圈圈。
+    android:max：进度条的最大值
+    android:progress：进度条已完成进度值
+    android:progressDrawable：设置轨道对应的Drawable对象
+    android:secondaryProgress：二级进度条，类似于视频播放的一条是当前播放进度，一条是缓冲进度，前者通过progress属性进行设置！
+
+
+3、SeekBar拖动的进度条。类似ios中UISlide： UIControl。
+    实际上ios中继承自UIControl的有UIButton、UITextField、UISlide、UISegmentControl、UIDatePicker。
+
+4、RatingBar。注意RatingBar和SeekBar的样式修改，都是基于<layer-list> 节点实现的。并且配合使用style搭配使用才能起到效果。
+
+    注意RatingBar、SeekBar、ProgressBar设置进度条样式都可以通过progressDrawable进行设置。
+
+5、ScrollView滚动视图。类似ios中UIScrollView。但是其继承关系是不一样的。
+    ScrollView extends FrameLayout extends ViewGroup
+    我们可以发现ScrollView其实是继承自FrameLayout帧视图的。里面只能存放一个视图。
+
+6、TextClock继承TextView，能够显示时间。
+    其可用属性并不多。
+    format12Hour 12小时制时间格式
+    format24Hour 24小时制时间格式
+    timeZone     时区
+
+7、Chronometer倒计时文本。
+    属性：
+    format: 设置格式。"MM:SS" or "H:MM:SS"
+    countDown： 是否倒计时   chronometer.setBase(SystemClock.elapsedRealtime());
+
+8、DatePicker: FrameLayout 日期选择器。ios中UIDatePicker类似。
+    属性：
+    datePickerMode 有两种样式。spinner和calendar 两者间的区别
+   TimerPicker: FrameLayout 时间选择器
+   CalendarView: FrameLayout 日历
+
+9、AlertDialog对话框。类似ios总UIAlertController(配合UIAlertAction使用)。
+    new AlertDialog.Builder 普通对话框。
+    常用属性：
+    setTitle
+    setMessage
+    setCancelable
+    setxxxButton
+
+    // 单选对话框
+    setSingleChoiceItems
+    // 复选框
+    setMultiChoiceItems
+    // 自定义对话框
+    setView
+
+    ProgressDialog: AlertDialog。目前废止。
+    new ProgressDialog(this) 进行初始化。
+
+    DatePickerDialog: AlertDialog。日期选择
+    new DatePickerDialog(this) 进行初始化。
+
+10、关于Android studio的几个常用配置。
+    show parameter hints on completion 设置。
+    editor -> general -> code completion -> Match Case 去掉。
+
+11、PopUpWindow对话框相对于AlertDialog的区别。主要是可以设置位置。
+    重要方法：
+    setContentView
+    showAsDrop
+
+12、Menu。android中常用的有三种菜单。
+    1、OptionMenu 选项菜单。也是最常见的菜单。
+    2、SubMenu 子菜单。
+    3、ContextMenu 上线文菜单。
+
+    OptionMenu是通过重写方法实现的。
+    onCreateOptionsMenu  创建
+    onOptionsItemSelected item选择
+
+    ContextMenu在onCreate中对列表进行注册
+               registerForContextMenu(recyclerView);
+               在onDestroy中对列表进行解绑
+               unregisterForContextMenu(recyclerView);
+
+    一般通过xml的形式来进行创建。 常见的几个标签<menu> <item> <group>。 其实group是对item不可见封装。
+    通过设置group来使得内部共用group属性。
+
+
+10.16
+1、PercentLayout百分比布局。当然android以及遗弃了。
+
+2、ConstraintLayout。官方推荐使用0dp表示match_parent
+
+    其属性都是
+    layout_constraint开头
+    layout_constraintBaseline_toBaselineOf 文本基线。
+    layout_goneMarginLeft   当相对定属性设置为gone时，该属性起作用。
+    layout_constraintCircle 设置相对于点的圆角显示。
+
+    layout_constraintHorizontal_bias
+    layout_constraintVertical_bias
+    这连个属性需要配合的前提是居中，表示偏移。
+
+    minWidth
+    maxWidth 最小和最大宽度
+
+    layout_constraintDimensionRatio 设置宽高比
+
+    // 链。
+    layout_constraintHorizontal_chainStyle来改变整条链的样式。chains提供了3种样式，分别是：
+    CHAIN_SPREAD —— 展开元素 (默认)；
+    CHAIN_SPREAD_INSIDE —— 展开元素，但链的两端贴近parent；
+    CHAIN_PACKED —— 链的元素将被打包在一起。
+
+    // 辅助工具
+    Barrier
+    通过设置barrier来进行控制。 ios中可以通过设置优选级来实现。
+    Barrier其实是继承ConstraintHelper ： View。也就是说Barrier是间接继承View的。
+    但是其属性并不会起作用。
+    属性：
+    constraint_referenced_ids 设置引用
+    barrierDirection 方向
+
+    // Group组。可以将制定控件组成组。
+    // Placeholder 通过content，将控件置为placeholder位置。
+    // Guideline 辅助线。
+
+
+10.19
+1、关于android中xml布局文件的几个标识：
+    xmlns:android="http://schemas.android.com/apk/res/android"
+     有了他，Android Studio就会在我们编写布局文件的时候给出提示，提示我们可以输入什么，不可以输入什么。也可以理解为语法文件，或者语法判断器。
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"  在项目中，我们往往使用系统自带的属性和控件还不够，我们可能
+        需要导入自定义控件的一些属性，或者support支持包之类的。就需要添加这句话。
+
+    xmlns:tools="http://schemas.android.com/tools" 可以告诉android studio，哪些属性在运行时候是被忽略的，只是在设计的时候
+        起作用。tools可以覆盖android的所有标准属性，将android:换成tools:即可；同时在运行的时候就连tools:本身都是被忽略的，不会被带进apk中。
+
+    其中xmlns是指xml name space。即xml的命名空间。
+
+2、关于像素知识。
+    分辨率对应的dpi。
+    "HVGA     mdpi"
+    "WVGA     hdpi "
+    "FWVGA    hdpi "
+    "QHD      hdpi "
+    "720P     xhdpi"
+    "1080P    xxhdpi "
+
+    px。像素，不用说。我们常见的1080*1920就是指的是px，而且像素都是以整数出现，每个像素表示一个点。
+    in。表示英寸（inch），是屏幕的物理尺寸。每英寸 = 2.54厘米。我们常说的手机屏幕就是使用的这个单位。比如5英寸 = 5 * 2.54cm = 12.5cm
+        具体是指对角线长度。
+    dpi。表示dots per inch的缩写。每英寸的点数，即每英寸包含的像素点。比如320X480分辨率的手机，宽2英寸，高3英寸,
+        每英寸包含的像素点的数量为320/2=160dpi（横向）或480/3=160dpi（纵向），160就是这部手机的dpi，横向和纵向的这个值都是相同的，
+        原因是大部分手机屏幕使用正方形的像素点。
+    density。表示屏幕密度。density和dpi的关系为 density = dpi/160。
+    dp。设备的独立像素。类似ios中pt，1pt = 0.17mm，是固定长度，而且需要根据设置scale进行像素转换，px = pt * scale。
+    sp。和dp很类似，之所有引进sp，是为了根据用户字体大小偏好进行设置。
+
+3、android中的View直接集成了一些事件。比如点击等。
+
+4、Adapter适配器。我们使用ListView和GridView都会使用是配置。
+    首先我们需要知道其继承关系。
+    Adapter(interface)
+        ListAdapter(interface)
+            WrapperListAdapter(interface)
+                HeaderListAdapter
+        SpinnerAdapter(interface)
+            BaseAdapter(抽象类，用的最多的一个类，实际开发中我们会自定义类继承BaseAdapter）
+                CursorAdapter
+                    ResourceCursorAdapter
+                        SimpleCursorAdapter
+                ArrayAdapter（只能展示一行文字）
+                SimpleAdapter（可以自定义多种效果）
+
+
+
+5、Android 作用域。
+    关键字        当前类            同一package        子孙类       其他package
+    public         √                    √             √                  √
+    protected      √                    √             √                  ×
+    friendly(默认)  √                    √             ×                  ×
+    private        √                    ×             ×                  ×
+
+    从上面的作用域可以看出。和swift的作用域的对比。
+    private    private
+    friendly   internal
+    protected  public
+    public     open
+
+
+10.26
+1、ListView。类似ios中的UITableView : UIScrollView。
+    继承关系。
+    ListView : AbsListView : AdapterView : ViewGroup : View : Object
+    RecycleBin是AbsListView的内部类，也是复用的控制中心，正是RecycleBin的存在让ListView有了复用的能力。
+
+2、GridView。类似ios中UICollectionView。
+
+3、ScrollView 和 HorizonScrollView。 类似ios中的UIScrollView。
+    特性：就是ScrollView内部需要一个控件。有点类似flutter中的SingleScrollView。
+
+4、RecycleView。隶属于v7包。
+    重要方法。
+    setLayoutManager： 有三种LayoutManager：LineLayoutManager、GridLayoutManager、StaggeredGridLayoutManager（瀑布流）。
+
+    setAdapter: 添加适配器。注意这里和BaseAdapter的区别。
+
+    addItemDecoration: 给item添加装饰。可以给item添加分割线。
+        ItemDecoration是抽象类，有三个方法：
+        onDraw: 在item的下面绘制。
+        onDrawOver： 在item的上面绘制。
+        getItemOffsets：在item的offset位置绘制。该方法可以添加分割线。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

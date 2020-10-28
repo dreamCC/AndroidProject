@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".viewGroup.ConstraintLayoutActivity"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_1"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="TextView1"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:background="#f05b72"/>
+
+    <!--layout_constraintBaseline_toBaselineOf文本基线-->
+    <TextView
+        android:id="@+id/tv_2"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_1"
+        app:layout_constraintLeft_toRightOf="@id/tv_1"
+        android:text="TextView2"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:background="#7fb80e"/>
+
+    <!--layout_constraintCircle设置圆弧偏移-->
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:text="circle"
+        android:background="#bed742"
+        app:layout_constraintCircle="@id/tv_1"
+        app:layout_constraintCircleAngle="10"
+        app:layout_constraintCircleRadius="100dp"
+        android:gravity="center"
+        tools:ignore="MissingConstraints" />
+
+    <!--layout_constraintHorizontal_bias设置偏移-->
+    <TextView
+        android:id="@+id/bias"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Bias"
+        android:gravity="center"
+        android:background="#7fb80e"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.3" />
+
+    <!--layout_constraintDimensionRatio 设置宽高比-->
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:text="Ratio"
+        android:background="#f15b6c"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintDimensionRatio="0.5"/>
+
+
+    <!--layout_constraintHorizontal_chainStyle配合使用-->
+    <TextView
+        android:id="@+id/chain_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/chain_2"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="#00a6ac"
+        android:text="链1"/>
+
+
+    <TextView
+        android:id="@+id/chain_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/chain_1"
+        app:layout_constraintRight_toLeftOf="@id/chain_3"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="#f15a22"
+        android:text="链2"/>
+
+    <TextView
+        android:id="@+id/chain_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/chain_2"
+        app:layout_constraintRight_toRightOf="parent"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="#00ae9d"
+        android:text="链3"/>
+
+    <!--barrier 栅栏-->
+    <TextView
+        android:id="@+id/barrier_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/chain_1"
+        android:layout_marginBottom="20dp"
+        android:background="#e0861a"
+        android:text="栅栏1"/>
+
+    <TextView
+        android:id="@+id/barrier_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/barrier_1"
+        android:layout_marginBottom="20dp"
+        android:background="#00ae9d"
+        android:text="栅栏1"/>
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="barrier_1,barrier_2" />
+
+    <View android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="#ed1941"
+        app:layout_constraintLeft_toRightOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@id/barrier_2"
+        android:layout_marginLeft="20dp" />
+
+    <!--可以进行分组，然后统一进行隐藏或者显示-->
+    <android.support.constraint.Group
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tv_1, tv_2"
+        android:visibility="invisible"
+        />
+
+    <!--placeholder将一个控件设置到制定位置-->
+    <android.support.constraint.Placeholder
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:content="@+id/bias" />
+
+</android.support.constraint.ConstraintLayout>
