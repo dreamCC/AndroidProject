@@ -55,4 +55,12 @@
         android:textAllCaps="false"
         android:textSize="20sp"/>
 
+    <Button
+        android:id="@+id/btn_7"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="MaterialRecyclerView"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
+
 </LinearLayout>

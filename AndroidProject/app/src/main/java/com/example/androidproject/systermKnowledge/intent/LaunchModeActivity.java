@@ -1,4 +1,4 @@
-package com.example.androidproject.systermKnowledge;
+package com.example.androidproject.systermKnowledge.intent;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.androidproject.MainActivity;
 import com.example.androidproject.R;
 
 public class LaunchModeActivity extends AppCompatActivity {

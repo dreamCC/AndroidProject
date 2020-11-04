@@ -10,7 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".listView.StaggerRecyclerViewActivity"></activity>
+        <activity android:name=".systermKnowledge.fragment.MFragmentActivity"></activity>
+        <activity android:name=".systermUI.WebViewActivity" />
+        <activity android:name=".listView.MaterialRecyclerViewActivity" />
+        <activity android:name=".listView.StaggerRecyclerViewActivity" />
         <activity android:name=".listView.GridRecyclerViewActivity" />
         <activity android:name=".listView.HorizonRecyclerViewActivity" />
         <activity android:name=".listView.RecyclerViewActivity" />
@@ -31,9 +34,9 @@
         <activity android:name=".systermUI.ImageViewActivity" />
         <activity android:name=".systermUI.ButtonActivity" />
         <activity android:name=".systermUI.TextViewActivity" />
-        <activity android:name=".systermKnowledge.LaunchModeActivity" />
-        <activity android:name=".systermKnowledge.LifeRecycleActivity" />
-        <activity android:name=".systermKnowledge.IntentExtraActivity" />
+        <activity android:name=".systermKnowledge.intent.LaunchModeActivity" />
+        <activity android:name=".systermKnowledge.intent.LifeRecycleActivity" />
+        <activity android:name=".systermKnowledge.intent.IntentExtraActivity" />
         <activity
             android:name=".systermKnowledge.SystemKnowledgeActivity"
             android:launchMode="singleTask">
@@ -43,7 +46,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".systermKnowledge.IntentActivity" />
+        <activity android:name=".systermKnowledge.intent.IntentActivity" />
         <activity android:name=".viewGroup.ConstraintLayoutActivity" />
         <activity android:name=".viewGroup.RelativeLayoutActivity" />
         <activity android:name=".viewGroup.FrameLayoutActivity" />
@@ -68,8 +71,8 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
 </manifest>

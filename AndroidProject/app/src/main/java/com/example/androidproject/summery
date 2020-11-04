@@ -466,6 +466,12 @@
         getItemOffsets：在item的offset位置绘制。该方法可以添加分割线。
 
 
+5、Android中的Bundle是用来对数据进行封装，然后进行数据传递的。如：Intent到Intent，或者Intent到Fragment。
+    ios中NSBundle是用来表示包的内容。
+    我们通过NSBundle.main.pathxxxxx。可以获取当前包（也就是app的内容）。
+    ios中NSBundle是获取文件路径的。
+
+
 
 
 

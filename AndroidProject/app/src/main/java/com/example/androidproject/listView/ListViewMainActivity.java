@@ -17,6 +17,7 @@ public class ListViewMainActivity extends AppCompatActivity implements View.OnCl
     private Button horizonRecycleView;
     private Button gridRecycleView;
     private Button staggerRecycleView;
+    private Button materialRecycleView;
 
 
 
@@ -42,6 +43,9 @@ public class ListViewMainActivity extends AppCompatActivity implements View.OnCl
 
         staggerRecycleView = findViewById(R.id.btn_6);
         staggerRecycleView.setOnClickListener(this);
+
+        materialRecycleView = findViewById(R.id.btn_7);
+        materialRecycleView.setOnClickListener(this);
     }
 
     @Override
@@ -69,6 +73,10 @@ public class ListViewMainActivity extends AppCompatActivity implements View.OnCl
         }else if(v == staggerRecycleView) {
 
             Intent intent = new Intent(this, StaggerRecyclerViewActivity.class);
+            startActivity(intent);
+        }else if(v == materialRecycleView) {
+
+            Intent intent = new Intent(this, MaterialRecyclerViewActivity.class);
             startActivity(intent);
         }
     }

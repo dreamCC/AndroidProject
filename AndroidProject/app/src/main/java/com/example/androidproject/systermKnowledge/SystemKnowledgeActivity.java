@@ -8,12 +8,17 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.androidproject.R;
+import com.example.androidproject.systermKnowledge.fragment.MFragmentActivity;
+import com.example.androidproject.systermKnowledge.intent.IntentActivity;
+import com.example.androidproject.systermKnowledge.intent.LaunchModeActivity;
+import com.example.androidproject.systermKnowledge.intent.LifeRecycleActivity;
 
 public class SystemKnowledgeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String kLogTag = "SystemKnowledgeActivity";
 
     private Button intent, lifeRecycle, launchMode;
+    private Button fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +34,9 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
 
         launchMode  = findViewById(R.id.btn_3);
         launchMode.setOnClickListener(this);
+
+        fragment = findViewById(R.id.btn_4);
+        fragment.setOnClickListener(this);
     }
 
     @Override
@@ -41,6 +49,9 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
             startActivity(intent);
         }else if(v == launchMode) {
             Intent intent = new Intent(this, LaunchModeActivity.class);
+            startActivity(intent);
+        }else if( v == fragment) {
+            Intent intent = new Intent(this, MFragmentActivity.class);
             startActivity(intent);
         }
     }

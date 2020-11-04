@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".systermKnowledge.IntentActivity"
+    tools:context=".systermKnowledge.intent.IntentActivity"
     android:padding="5dp">
 
 

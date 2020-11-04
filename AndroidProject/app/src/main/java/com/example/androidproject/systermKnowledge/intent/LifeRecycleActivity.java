@@ -1,4 +1,4 @@
-package com.example.androidproject.systermKnowledge;
+package com.example.androidproject.systermKnowledge.intent;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
