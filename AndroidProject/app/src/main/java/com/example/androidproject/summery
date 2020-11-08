@@ -471,9 +471,46 @@
     我们通过NSBundle.main.pathxxxxx。可以获取当前包（也就是app的内容）。
     ios中NSBundle是获取文件路径的。
 
+11.5
+1、Fragment是一种可以嵌入在活动中的UI片段，能够让程序更加合理和充分地利用大屏幕的空间，出现的初衷是为了
+适应大屏幕的平板电脑，可以将其看成一个小型Activity，又称作Activity片段。
+    其优势：
+    a、模块化：不需要把代码全部写在Activity中，而是把代码写在各自的fragment中。
+    b、可重用：多个Activity可以重用一个Fragment。
+    其实由于ios的设计，所以ios中每个UIViewController就可以看做是一个Fragment。可以通过view.add(childVc.view)来进行
+    添加view。同时通过vc.addChirld(childVc)来添加子控制器。
 
+2、Fragment加载分为两种，静态和动态。
+    静态通过是用fragment标签加载。
+    动态最常用：
+    1、getSupportFragmentManager(); 获取FragmentManager，是用来管理Activity中的Fragment的。
+        常见方法，fragmentMng.findFragmentByTag\id来进行查询。
+    2、fragment.beginTransition(); 获取FragmentTransition，事务，用来添加、移除、替换Fragment。
+        transition.add(); 添加。 // fragment进行一轮生命周期。
+        transition.remove(); 移除。  // 移除生命周期，知道fragment调用deAttach();结束。 fragment、view都销毁
+        transition.replace(); 替换。 // a.remove(); b.add(); 也就是a先移除，b在添加。
+        transition.hidden(); 隐藏。  // a.onHiddenChanged方法。 fragment、view都不销毁
+        transition.show(); 显示。    // a.onHiddenChanged方法。  fragment、view都不销毁
+        transition.deAttach();       // fragment并不会完全销毁，而是调用onDestroyView()方法来销毁view层级
+        transiton.attach();         //  调用onCreateView来创建view。
+        transition.commit(); 提交一个事务。
+    3、注意每次做一次操作都需要重新获取事务，和提交事务。
 
+3、Fragment传递数据。分三种情况。
+    1、Activity向Fragment传递。
+        最简单，通过newInstance方法传递。 因为Fragment不能重写构造方法。
 
+    2、Fragment向Activity传值。
+        a.getActivity().xxxx进传值。
+
+    3、Fragment向Fragment传值。
+        a.getActivity();
+        activity.getSupportFragmentManager();
+        mng.findFragmentByxx()；
+        然后进行传值。
+
+4、回退栈。backStack。
+    前提是通过addToBackStack经Fragment添加回退站中。
 
 
 

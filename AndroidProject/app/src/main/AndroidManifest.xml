@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".systermKnowledge.fragment.MFragmentActivity"></activity>
+        <activity android:name=".systermKnowledge.fragment.StaticFragmentActivity"></activity>
+        <activity android:name=".systermKnowledge.fragment.DynamicFragmentActivity" />
         <activity android:name=".systermUI.WebViewActivity" />
         <activity android:name=".listView.MaterialRecyclerViewActivity" />
         <activity android:name=".listView.StaggerRecyclerViewActivity" />
@@ -71,8 +72,8 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

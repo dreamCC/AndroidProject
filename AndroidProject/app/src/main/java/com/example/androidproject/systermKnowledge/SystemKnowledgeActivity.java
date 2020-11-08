@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.androidproject.R;
-import com.example.androidproject.systermKnowledge.fragment.MFragmentActivity;
+import com.example.androidproject.systermKnowledge.fragment.DynamicFragmentActivity;
+import com.example.androidproject.systermKnowledge.fragment.StaticFragmentActivity;
 import com.example.androidproject.systermKnowledge.intent.IntentActivity;
 import com.example.androidproject.systermKnowledge.intent.LaunchModeActivity;
 import com.example.androidproject.systermKnowledge.intent.LifeRecycleActivity;
@@ -18,7 +19,7 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
     private String kLogTag = "SystemKnowledgeActivity";
 
     private Button intent, lifeRecycle, launchMode;
-    private Button fragment;
+    private Button staticFragment, dynamicFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +36,11 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
         launchMode  = findViewById(R.id.btn_3);
         launchMode.setOnClickListener(this);
 
-        fragment = findViewById(R.id.btn_4);
-        fragment.setOnClickListener(this);
+        staticFragment = findViewById(R.id.btn_4);
+        staticFragment.setOnClickListener(this);
+
+        dynamicFragment = findViewById(R.id.btn_5);
+        dynamicFragment.setOnClickListener(this);
     }
 
     @Override
@@ -50,8 +54,11 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
         }else if(v == launchMode) {
             Intent intent = new Intent(this, LaunchModeActivity.class);
             startActivity(intent);
-        }else if( v == fragment) {
-            Intent intent = new Intent(this, MFragmentActivity.class);
+        }else if( v == staticFragment) {
+            Intent intent = new Intent(this, StaticFragmentActivity.class);
+            startActivity(intent);
+        }else if (v.getId() == R.id.btn_5) {
+            Intent intent = new Intent(this, DynamicFragmentActivity.class);
             startActivity(intent);
         }
     }

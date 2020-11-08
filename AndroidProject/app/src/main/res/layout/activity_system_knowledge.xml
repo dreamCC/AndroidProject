@@ -32,7 +32,14 @@
         android:id="@+id/btn_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fragment"
+        android:text="StaticFragment"
         app:layout_constraintTop_toBottomOf="@id/btn_3"/>
+
+    <Button
+        android:id="@+id/btn_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DynamicFragment"
+        app:layout_constraintTop_toBottomOf="@id/btn_4"/>
 
 </android.support.constraint.ConstraintLayout>
