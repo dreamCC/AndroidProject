@@ -2,23 +2,29 @@ package com.example.androidproject.systermKnowledge.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.example.androidproject.R;
 
 public class BFragment extends Fragment {
 
+    interface BFragmentListener {
+        void onClick(String value);
+    }
 
     private String kLogTag = "BFragment";
-    public static BFragment newInstance(String title) {
+    private BFragmentListener listener;
+    private TextView textView;
 
+    public static BFragment newInstance(String title) {
         Bundle args = new Bundle();
         args.putString("title", title);
         BFragment fragment = new BFragment();
@@ -31,6 +37,11 @@ public class BFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         Log.i(kLogTag, "onAttach");
+        try {
+            listener = (BFragmentListener) context;
+        }catch (ClassCastException e) {
+            throw new ClassCastException("Activity 需要遵循BFragmentListener");
+        }
     }
 
     @Nullable
@@ -44,9 +55,14 @@ public class BFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
-        TextView textView = view.findViewById(R.id.tv_1);
+        textView = view.findViewById(R.id.tv_1);
         textView.setText(bundle.getString("title"));
-
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick("BFragment 点击");
+            }
+        });
     }
 
     @Override

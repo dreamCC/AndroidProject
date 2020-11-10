@@ -3,11 +3,11 @@ package com.example.androidproject.systermKnowledge.intent;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidproject.R;
 
@@ -140,7 +140,7 @@ public class IntentActivity extends AppCompatActivity implements View.OnClickLis
 
     // 通过该方法进行返回值获取
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK) {
             String result = data.getStringExtra("result");

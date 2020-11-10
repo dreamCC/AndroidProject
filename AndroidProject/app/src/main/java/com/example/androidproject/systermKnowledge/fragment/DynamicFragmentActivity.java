@@ -1,17 +1,18 @@
 package com.example.androidproject.systermKnowledge.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.example.androidproject.R;
 
-public class DynamicFragmentActivity extends AppCompatActivity {
+public class DynamicFragmentActivity extends AppCompatActivity implements BFragment.BFragmentListener{
 
 
     private Button changeBtn;
@@ -23,8 +24,6 @@ public class DynamicFragmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fragment_dynamic);
 
         aFragment = new AFragment();
-
-
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
         final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -46,7 +45,7 @@ public class DynamicFragmentActivity extends AppCompatActivity {
                 // fragmentTransaction.remove(aFragment);
 
                 // aFragment.remove(); bFragment.add();
-                //fragmentTransaction.replace(R.id.fl_1, bFragment);
+                fragmentTransaction.replace(R.id.fl_1, bFragment);
 
                 // 隐藏、显示。 调用aFragment onHiddenChanged方法。视图并不会销毁。
 //                if (aFragment.isHidden()) {
@@ -55,13 +54,13 @@ public class DynamicFragmentActivity extends AppCompatActivity {
 //                    fragmentTransaction.hide(aFragment);
 //                }
 
-                if (aFragment.isAdded()) {
-                    // detach会调用，onPause、onStop、OnDestroyView方法。
-                    fragmentTransaction.detach(aFragment);
-                }else  {
-                    // attach 调用，onCreatView和onViewCreated方法。
-                    fragmentTransaction.attach(aFragment);
-                }
+//                if (aFragment.isAdded()) {
+//                    // detach会调用，onPause、onStop、OnDestroyView方法。
+//                    fragmentTransaction.detach(aFragment);
+//                }else  {
+//                    // attach 调用，onCreatView和onViewCreated方法。
+//                    fragmentTransaction.attach(aFragment);
+//                }
 
                 fragmentTransaction.commitAllowingStateLoss();
             }
@@ -72,5 +71,11 @@ public class DynamicFragmentActivity extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event) {
         Log.i("--", "是否隐藏" + aFragment.isHidden());
         return super.onTouchEvent(event);
+    }
+
+
+    @Override
+    public void onClick(String value) {
+        Log.i("--", "接受到值" + value);
     }
 }

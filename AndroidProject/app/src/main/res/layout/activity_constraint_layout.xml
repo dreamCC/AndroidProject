@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -132,7 +132,7 @@
         android:background="#00ae9d"
         android:text="栅栏1"/>
 
-    <android.support.constraint.Barrier
+    <androidx.constraintlayout.Barrier
         android:id="@+id/barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
         android:layout_marginLeft="20dp" />
 
     <!--可以进行分组，然后统一进行隐藏或者显示-->
-    <android.support.constraint.Group
+    <androidx.constraintlayout.Group
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="tv_1, tv_2"
@@ -155,11 +155,11 @@
         />
 
     <!--placeholder将一个控件设置到制定位置-->
-    <android.support.constraint.Placeholder
+    <androidx.constraintlayout.Placeholder
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:content="@+id/bias" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

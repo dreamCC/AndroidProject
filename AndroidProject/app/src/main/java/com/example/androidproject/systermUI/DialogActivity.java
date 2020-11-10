@@ -6,9 +6,6 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
@@ -16,11 +13,15 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.androidproject.R;
 
 import java.util.Calendar;
 
-public class DialogActivity extends AppCompatActivity  {
+public class DialogActivity extends AppCompatActivity {
 
 
     private String kLogTag = "DialogActivity";
@@ -33,6 +34,7 @@ public class DialogActivity extends AppCompatActivity  {
 
     // 普通
     public void showNormalDialog(View view) {
+
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setTitle("删除记录");

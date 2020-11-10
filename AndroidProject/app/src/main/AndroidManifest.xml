@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".systermKnowledge.fragment.StaticFragmentActivity"></activity>
+        <activity android:name=".systermKnowledge.event.CallbakEventActivity"></activity>
+        <activity android:name=".systermKnowledge.event.ListenEventActivity" />
+        <activity android:name=".systermKnowledge.fragment.StaticFragmentActivity" />
         <activity android:name=".systermKnowledge.fragment.DynamicFragmentActivity" />
         <activity android:name=".systermUI.WebViewActivity" />
         <activity android:name=".listView.MaterialRecyclerViewActivity" />

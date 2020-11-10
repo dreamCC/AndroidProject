@@ -1,12 +1,13 @@
 package com.example.androidproject.systermUI;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidproject.R;
 

@@ -2,11 +2,12 @@ package com.example.androidproject.systermUI;
 
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidproject.R;
 
