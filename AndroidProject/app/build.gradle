@@ -16,64 +16,64 @@ android {
     }
 
 
-//    signingConfigs {
-//        debug {
-//            storeFile file(rootProject.rootDir.toString() + DEBUG_STOREFILE)
-//            storePassword DEBUG_STOREPASSWORD
-//            keyAlias DEBUG_KEYALIAS
-//            keyPassword DEBUB_KEYPASSWORD
-//            v1SigningEnabled true
-//            v2SigningEnabled Boolean.valueOf(V2_SIGNING)
-//        }
-//
-//        release {
-//            storeFile file(rootProject.rootDir.toString() + RELEASE_STOREFILE)
-//            storePassword RELEASE_STOREPASSWORD
-//            keyAlias RELEASE_KEYALIAS
-//            keyPassword RELEASE_KEYPASSWORD
-//            v1SigningEnabled true
-//            v2SigningEnabled Boolean.valueOf(V2_SIGNING)
-//        }
-//    }
-//
-//    dexOptions {
-//        jumboMode = true
-//        preDexLibraries = true
-//        javaMaxHeapSize = '4g'
-//    }
-//
-//    buildTypes {
-//        debug {
-//            // debug模式
-//            multiDexEnabled true
-//            // 是否进行混淆
-//            minifyEnabled true
-//            // 是否启用zipAlign
-//            zipAlignEnabled true
-//            // 移除无用的resource文件
-//            shrinkResources true
-//            proguardFile 'proguard.cfg'
-//            signingConfig signingConfigs.debug
-//            ndk{
-//                abiFilters "armeabi","armeabi-v7a","arm64-v8a","x86"
-//            }
-//        }
-//
-//        release {
-//            multiDexEnabled true
-//            //开启代码混淆
-//            minifyEnabled true
-//            //Zipalign优化
-//            zipAlignEnabled true
-//            // 移除无用的resource文件
-//            shrinkResources true
-//            proguardFile 'proguard.cfg'
-//            signingConfig signingConfigs.release
-//            ndk{
-//                abiFilters "armeabi-v7a","arm64-v8a"
-//            }
-//        }
-//    }
+    signingConfigs {
+        debug {
+            storeFile file(rootProject.rootDir.toString() + DEBUG_STOREFILE)
+            storePassword DEBUG_STOREPASSWORD
+            keyAlias DEBUG_KEYALIAS
+            keyPassword DEBUB_KEYPASSWORD
+            v1SigningEnabled true
+            v2SigningEnabled Boolean.valueOf(V2_SIGNING)
+        }
+
+        release {
+            storeFile file(rootProject.rootDir.toString() + RELEASE_STOREFILE)
+            storePassword RELEASE_STOREPASSWORD
+            keyAlias RELEASE_KEYALIAS
+            keyPassword RELEASE_KEYPASSWORD
+            v1SigningEnabled true
+            v2SigningEnabled Boolean.valueOf(V2_SIGNING)
+        }
+    }
+
+    dexOptions {
+        jumboMode = true
+        preDexLibraries = true
+        javaMaxHeapSize = '4g'
+    }
+
+    buildTypes {
+        debug {
+            // debug模式
+            multiDexEnabled true
+            // 是否进行混淆
+            minifyEnabled true
+            // 是否启用zipAlign
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            proguardFile 'proguard.cfg'
+            signingConfig signingConfigs.debug
+            ndk{
+                abiFilters "armeabi","armeabi-v7a","arm64-v8a","x86"
+            }
+        }
+
+        release {
+            multiDexEnabled true
+            //开启代码混淆
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            proguardFile 'proguard.cfg'
+            signingConfig signingConfigs.release
+            ndk{
+                abiFilters "armeabi-v7a","arm64-v8a"
+            }
+        }
+    }
 
 
     sourceSets{

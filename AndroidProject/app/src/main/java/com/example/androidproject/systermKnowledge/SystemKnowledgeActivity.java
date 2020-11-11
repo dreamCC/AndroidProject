@@ -9,6 +9,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidproject.R;
+import com.example.androidproject.systermKnowledge.broadcast.BroadcastActivity;
 import com.example.androidproject.systermKnowledge.fragment.DynamicFragmentActivity;
 import com.example.androidproject.systermKnowledge.fragment.StaticFragmentActivity;
 import com.example.androidproject.systermKnowledge.intent.IntentActivity;
@@ -21,6 +22,7 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
 
     private Button intent, lifeRecycle, launchMode;
     private Button staticFragment, dynamicFragment;
+    private Button broadcast;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,9 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
 
         dynamicFragment = findViewById(R.id.btn_5);
         dynamicFragment.setOnClickListener(this);
+
+        broadcast = findViewById(R.id.btn_6);
+        broadcast.setOnClickListener(this);
     }
 
     @Override
@@ -60,6 +65,9 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
             startActivity(intent);
         }else if (v.getId() == R.id.btn_5) {
             Intent intent = new Intent(this, DynamicFragmentActivity.class);
+            startActivity(intent);
+        }else if (v.getId() == R.id.btn_6) {
+            Intent intent = new Intent(this, BroadcastActivity.class);
             startActivity(intent);
         }
     }

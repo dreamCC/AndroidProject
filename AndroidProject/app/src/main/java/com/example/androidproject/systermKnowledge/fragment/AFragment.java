@@ -25,6 +25,8 @@ public class AFragment extends Fragment {
         super.onAttach(context);
         Log.i(kLogTag, "onAttach");
 
+
+
     }
 
     // 创建Fragment时候回调用。

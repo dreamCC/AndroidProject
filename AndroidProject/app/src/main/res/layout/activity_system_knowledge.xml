@@ -42,4 +42,11 @@
         android:text="DynamicFragment"
         app:layout_constraintTop_toBottomOf="@id/btn_4"/>
 
+    <Button
+        android:id="@+id/btn_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Broadcast"
+        app:layout_constraintTop_toBottomOf="@id/btn_5"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
