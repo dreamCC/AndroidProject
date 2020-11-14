@@ -16,8 +16,15 @@ android {
     }
 
 
+
+    dexOptions {
+        jumboMode = true
+        preDexLibraries = true
+        javaMaxHeapSize = '4g'
+    }
+
     signingConfigs {
-        debug {
+        test {
             storeFile file(rootProject.rootDir.toString() + DEBUG_STOREFILE)
             storePassword DEBUG_STOREPASSWORD
             keyAlias DEBUG_KEYALIAS
@@ -36,11 +43,6 @@ android {
         }
     }
 
-    dexOptions {
-        jumboMode = true
-        preDexLibraries = true
-        javaMaxHeapSize = '4g'
-    }
 
     buildTypes {
         debug {

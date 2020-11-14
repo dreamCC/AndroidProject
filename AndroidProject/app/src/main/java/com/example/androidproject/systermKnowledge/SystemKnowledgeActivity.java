@@ -12,9 +12,11 @@ import com.example.androidproject.R;
 import com.example.androidproject.systermKnowledge.broadcast.BroadcastActivity;
 import com.example.androidproject.systermKnowledge.fragment.DynamicFragmentActivity;
 import com.example.androidproject.systermKnowledge.fragment.StaticFragmentActivity;
+import com.example.androidproject.systermKnowledge.handler.HandlerActivity;
 import com.example.androidproject.systermKnowledge.intent.IntentActivity;
 import com.example.androidproject.systermKnowledge.intent.LaunchModeActivity;
 import com.example.androidproject.systermKnowledge.intent.LifeRecycleActivity;
+import com.example.androidproject.systermKnowledge.keyword.KeywordActivity;
 
 public class SystemKnowledgeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,6 +25,9 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
     private Button intent, lifeRecycle, launchMode;
     private Button staticFragment, dynamicFragment;
     private Button broadcast;
+    private Button keyword;
+    private Button handler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +52,12 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
 
         broadcast = findViewById(R.id.btn_6);
         broadcast.setOnClickListener(this);
+
+        keyword = findViewById(R.id.btn_7);
+        keyword.setOnClickListener(this);
+
+        handler = findViewById(R.id.btn_8);
+        handler.setOnClickListener(this);
     }
 
     @Override
@@ -68,6 +79,12 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
             startActivity(intent);
         }else if (v.getId() == R.id.btn_6) {
             Intent intent = new Intent(this, BroadcastActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.btn_7) {
+            Intent intent = new Intent(this, KeywordActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.btn_8) {
+            Intent intent = new Intent(this, HandlerActivity.class);
             startActivity(intent);
         }
     }

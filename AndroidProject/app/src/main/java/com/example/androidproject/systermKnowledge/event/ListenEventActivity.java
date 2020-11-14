@@ -34,5 +34,4 @@ public class ListenEventActivity extends AppCompatActivity implements View.OnCli
         Log.i(kLogTag, "遵循interface--点击");
     }
 
-
 }

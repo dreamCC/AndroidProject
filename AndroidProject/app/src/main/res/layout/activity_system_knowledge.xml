@@ -49,4 +49,17 @@
         android:text="Broadcast"
         app:layout_constraintTop_toBottomOf="@id/btn_5"/>
 
+    <Button
+        android:id="@+id/btn_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Keyword"
+        app:layout_constraintTop_toBottomOf="@id/btn_6"/>
+
+    <Button
+        android:id="@+id/btn_8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Handler"
+        app:layout_constraintTop_toBottomOf="@id/btn_7"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

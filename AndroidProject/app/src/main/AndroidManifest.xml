@@ -10,8 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".systermKnowledge.broadcast.BroadcastActivity"></activity>
-        <activity android:name=".systermKnowledge.event.CallbakEventActivity" />
+        <activity android:name=".systermKnowledge.handler.HandlerActivity"></activity>
+        <activity android:name=".systermKnowledge.InnerClass.InnerClassActivity" />
+        <activity android:name=".systermKnowledge.broadcast.BroadcastActivity" />
+        <activity android:name=".systermKnowledge.event.CallbackEventActivity" />
         <activity android:name=".systermKnowledge.event.ListenEventActivity" />
         <activity android:name=".systermKnowledge.fragment.StaticFragmentActivity" />
         <activity android:name=".systermKnowledge.fragment.DynamicFragmentActivity" />
@@ -74,6 +76,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".systermKnowledge.keyword.KeywordActivity" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 
