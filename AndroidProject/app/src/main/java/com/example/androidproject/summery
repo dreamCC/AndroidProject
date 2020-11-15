@@ -696,7 +696,28 @@
 
 
 11.13
-1、Handler的使用。
+1、Handler的使用。Handler牵扯到几个重要的类。
+    Handler：快递员（属于某个快递公司的职员）
+    Message：包裹（可以放置很多东西的箱子）
+    MessageQueue：快递分拣中心（分拣快递的传送带）
+    Looper：快递公司（具有处理包裹去向的管理中心）
+
+   Handler常用场景：
+   1、主线程更新UI。
+   2、指定消息通知。
+
+   使用方式。post和sendMsg两种方式。
+
+2、Android中的多线程。android中操作多线程有四种方法（ios有三种Thread、OperationQueue、GCD）：
+    Runnable是一个接口，里面有run（）方法。
+    Runnable是一个线程辅助类，而真正创建线程的是Thread类。
+    注意Thread实现了Runnable接口，所以有run方法。但是实际上我们开启线程是通过thread.start()。开启。
+
+    1、Handler+Thread。
+    2、AsyncTask。
+    3、ThreadPoolExecutor。
+    4、IntentService
+
 
 
 

@@ -17,6 +17,7 @@ import com.example.androidproject.systermKnowledge.intent.IntentActivity;
 import com.example.androidproject.systermKnowledge.intent.LaunchModeActivity;
 import com.example.androidproject.systermKnowledge.intent.LifeRecycleActivity;
 import com.example.androidproject.systermKnowledge.keyword.KeywordActivity;
+import com.example.androidproject.systermKnowledge.thread.ThreadActivity;
 
 public class SystemKnowledgeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,6 +28,7 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
     private Button broadcast;
     private Button keyword;
     private Button handler;
+    private Button thread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,9 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
 
         handler = findViewById(R.id.btn_8);
         handler.setOnClickListener(this);
+
+        thread = findViewById(R.id.btn_9);
+        thread.setOnClickListener(this);
     }
 
     @Override
@@ -85,6 +90,9 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
             startActivity(intent);
         }else if(v.getId() == R.id.btn_8) {
             Intent intent = new Intent(this, HandlerActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.btn_9) {
+            Intent intent = new Intent(this, ThreadActivity.class);
             startActivity(intent);
         }
     }
