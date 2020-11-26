@@ -10,7 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".systermKnowledge.thread.ThreadActivity"></activity>
+        <activity android:name=".systermKnowledge.service.ServiceActivity" />
+
+        <activity android:name=".systermKnowledge.configuration.ConfigurationActivity" />
+        <activity android:name=".systermKnowledge.gesture.GestureActivity" />
+        <activity android:name=".systermKnowledge.thread.ThreadActivity" />
         <activity android:name=".systermKnowledge.handler.HandlerActivity" />
         <activity android:name=".systermKnowledge.InnerClass.InnerClassActivity" />
         <activity android:name=".systermKnowledge.broadcast.BroadcastActivity" />
@@ -78,9 +82,32 @@
             </intent-filter>
         </activity>
         <activity android:name=".systermKnowledge.keyword.KeywordActivity" />
-    </application>
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+        <receiver android:name=".systermKnowledge.broadcast.BroadcastActivity$UsbBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+            </intent-filter>
+        </receiver>
 
+        <service
+            android:name=".systermKnowledge.service.BankService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BANK_WORKER"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.BANK_BOSS"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".systermKnowledge.service.MineService"
+            android:enabled="true"
+            android:exported="true" />
+    </application>
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
 </manifest>

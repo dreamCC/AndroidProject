@@ -718,9 +718,57 @@
     3、ThreadPoolExecutor。
     4、IntentService
 
+11.17
+1、BroadcastReceive广播接收者。类似ios中NSNotificationCenter。
 
+2、android中的手势Gesture。手势交互过程：
+    1.手指触碰屏幕时，触发MotionEvent事件！
+    2.该事件被OnTouchListener监听，可在它的onTouch()方法中获得该MotionEvent对象！
+    3.通过GestureDetector转发MotionEvent对象给OnGestureListener
+    4.我们可以通过OnGestureListener获得该对象，然后获取相关信息，以及做相关处理！
 
+    其中MotionEvent是手势对象。类似ios中Event。
+    GestureDetector：识别各种手势。类似ios中Gesture。
+    OnGestureListener： 手势交互的各种api。
 
+11.18
+1、IntentFilter。Intent过滤器。 Intent的意图。
+    我们使用Intent的时候，设置的action、category等，最后都是设置到IntentFilter中。
+
+2、Service。属于四大组件：所以使用的使用需要在manifest里面注册。
+   我们需要了解程序、进程、线程的区别。
+   程序就是一堆静态代码。
+   进程就是运行的程序。
+   线程就是比进程更小的执行单元，每个进程可能有多个线程，线程需要放在进程中才能执行。
+
+   注意和线程的区别。
+   android和ios的后台机制：
+   ios：切换到后台后程序就会停止（一般有5s左右的缓冲事件，程序员可以进行延长）。当我们点击home键的时候，看到的其实是我们
+   浏览程序的记录（这也是以前qq切换到后台不能收到消息的原因，当然现在ios采用通知的方式来解决这个问题）。所以哪怕我们是在循环遍历一些操作也会停止。
+   android：应用在被切换到后台时，它其实已经被暂停了，并不会消耗cpu资源，只保留了运行状态。而且android运行需要虚拟机，这也是安卓程序更占内存的原因。
+
+   Service的生命周期，主要有三个方法：
+   onCreate：
+   onStartCommand:
+   onDestroy:
+
+   Service开启后并不会自动停止。
+
+   Service启动的方式：
+   1、通过startService启动。
+        通过startService启动，我们如果不调用stopService，那么该服务将一直运行。哪怕我们将activity销毁，service也不会销毁。
+        onCreate->startCommand->onDestroy
+   2、通过bindService启动。
+        通过bindService启动，如果我们不调用unBinder，那么当activity销毁，将会报错。
+        onCreate->onBind->onUnBind->onDestroy  不能够多次绑定。
+
+11.20
+1、android studio快捷键。
+    alt + enter   错误提示。
+    cmd + p   参数提示。
+    option + cmd + f  快速价格变量抽成成员变量。
+
+2、android AIDL。
 
 
 

@@ -6,4 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".systermKnowledge.broadcast.BroadcastActivity">
 
+    <Button
+        android:id="@+id/btn_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="系统监听（静态注册）"
+        android:onClick="static_systemReceiver"/>
+
+    <Button
+        android:id="@+id/btn_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_1"
+        android:text="系统监听（动态注册）"
+        android:onClick="dynamic_systemReceiver"/>
+
+    <Button
+        android:id="@+id/btn_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_2"
+        android:text="自定义监听(注册)"
+        android:onClick="customReceiverRegister"/>
+
+    <Button
+        android:id="@+id/btn_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_3"
+        android:text="自定义监听(发送)"
+        android:onClick="customReceiverSend"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

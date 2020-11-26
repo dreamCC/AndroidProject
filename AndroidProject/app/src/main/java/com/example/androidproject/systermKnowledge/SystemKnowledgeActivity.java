@@ -10,13 +10,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidproject.R;
 import com.example.androidproject.systermKnowledge.broadcast.BroadcastActivity;
+import com.example.androidproject.systermKnowledge.configuration.ConfigurationActivity;
 import com.example.androidproject.systermKnowledge.fragment.DynamicFragmentActivity;
 import com.example.androidproject.systermKnowledge.fragment.StaticFragmentActivity;
+import com.example.androidproject.systermKnowledge.gesture.GestureActivity;
 import com.example.androidproject.systermKnowledge.handler.HandlerActivity;
 import com.example.androidproject.systermKnowledge.intent.IntentActivity;
 import com.example.androidproject.systermKnowledge.intent.LaunchModeActivity;
 import com.example.androidproject.systermKnowledge.intent.LifeRecycleActivity;
 import com.example.androidproject.systermKnowledge.keyword.KeywordActivity;
+import com.example.androidproject.systermKnowledge.service.ServiceActivity;
 import com.example.androidproject.systermKnowledge.thread.ThreadActivity;
 
 public class SystemKnowledgeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -29,6 +32,10 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
     private Button keyword;
     private Button handler;
     private Button thread;
+    private Button gesture;
+    private Button configuration;
+    private Button service;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +70,15 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
 
         thread = findViewById(R.id.btn_9);
         thread.setOnClickListener(this);
+
+        gesture = findViewById(R.id.btn_10);
+        gesture.setOnClickListener(this);
+
+        configuration = findViewById(R.id.btn_11);
+        configuration.setOnClickListener(this);
+
+        service = findViewById(R.id.btn_12);
+        service.setOnClickListener(this);
     }
 
     @Override
@@ -93,6 +109,15 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
             startActivity(intent);
         }else if(v.getId() == R.id.btn_9) {
             Intent intent = new Intent(this, ThreadActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.btn_10) {
+            Intent intent = new Intent(this, GestureActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.btn_11) {
+            Intent intent = new Intent(this, ConfigurationActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.btn_12) {
+            Intent intent = new Intent(this, ServiceActivity.class);
             startActivity(intent);
         }
     }

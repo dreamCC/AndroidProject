@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".systermKnowledge.service.ServiceActivity">
+
+    <Button
+        android:id="@+id/btn_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="startServiceBtnClick"
+        android:text="startService"/>
+
+    <Button
+        android:id="@+id/btn_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="stopServiceBtnClick"
+        app:layout_constraintTop_toBottomOf="@id/btn_1"
+        android:text="stopService"/>
+
+    <Button
+        android:id="@+id/btn_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="bindServiceBtnClick"
+        app:layout_constraintTop_toBottomOf="@id/btn_2"
+        android:text="bindService"/>
+
+    <Button
+        android:id="@+id/btn_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="unBindServiceBtnClick"
+        app:layout_constraintTop_toBottomOf="@id/btn_3"
+        android:text="unBindService"/>
+
+    <Button
+        android:id="@+id/btn_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="callServiceMethodBtnClick"
+        app:layout_constraintTop_toBottomOf="@id/btn_4"
+        android:text="调用Service内部方法"/>
+
+
+
+    <Button
+        android:id="@+id/btn_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="bindBankServiceBtnClick"
+        app:layout_constraintTop_toBottomOf="@id/btn_5"
+        android:text="bindService(BankService)"/>
+
+    <Button
+        android:id="@+id/btn_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="unBindBankServiceBtnClick"
+        app:layout_constraintTop_toBottomOf="@id/btn_6"
+        android:text="unBindService(BankService)"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
