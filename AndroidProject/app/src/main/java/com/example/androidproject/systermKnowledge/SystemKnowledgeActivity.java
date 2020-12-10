@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.androidproject.R;
 import com.example.androidproject.systermKnowledge.broadcast.BroadcastActivity;
 import com.example.androidproject.systermKnowledge.configuration.ConfigurationActivity;
+import com.example.androidproject.systermKnowledge.contentProvider.ContentProviderActivity;
 import com.example.androidproject.systermKnowledge.fragment.DynamicFragmentActivity;
 import com.example.androidproject.systermKnowledge.fragment.StaticFragmentActivity;
 import com.example.androidproject.systermKnowledge.gesture.GestureActivity;
@@ -35,6 +36,8 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
     private Button gesture;
     private Button configuration;
     private Button service;
+    private Button contentProvider;
+
 
 
     @Override
@@ -43,6 +46,7 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
         setContentView(R.layout.activity_system_knowledge);
 
         Log.i("SystemKnowledgeActivity", "SystemKnowledgeActivity 的 task id = " + getTaskId());
+
 
         intent = findViewById(R.id.btn_1);
         intent.setOnClickListener(this);
@@ -79,6 +83,9 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
 
         service = findViewById(R.id.btn_12);
         service.setOnClickListener(this);
+
+        contentProvider = findViewById(R.id.btn_13);
+        contentProvider.setOnClickListener(this);
     }
 
     @Override
@@ -118,6 +125,9 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
             startActivity(intent);
         }else if(v.getId() == R.id.btn_12) {
             Intent intent = new Intent(this, ServiceActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.btn_13) {
+            Intent intent = new Intent(this, ContentProviderActivity.class);
             startActivity(intent);
         }
     }

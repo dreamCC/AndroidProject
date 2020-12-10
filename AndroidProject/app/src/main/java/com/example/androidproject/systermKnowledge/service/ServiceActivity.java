@@ -47,6 +47,7 @@ public class ServiceActivity extends AppCompatActivity {
     private ICommunication binder;
     private ServiceConnection bankWorkConnection;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,9 +86,11 @@ public class ServiceActivity extends AppCompatActivity {
         serviceIntent.setClass(this, MineService.class);
         serviceConnection = new ServiceConnection() {
 
+
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
                 binder = (ICommunication) service;
+
             }
 
             @Override

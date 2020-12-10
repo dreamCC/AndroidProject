@@ -771,7 +771,12 @@
 2、android AIDL。
 
 
+12.07
+1、ContentProvider
 
+11.10
+1、获取本地app的路径。data/data/包名/xxxxxxxx。
+    在实际开发中，我们一般不会操作改路径，因为该路径可能出现改变。我们应该使用context来操作问价。
 
 
 

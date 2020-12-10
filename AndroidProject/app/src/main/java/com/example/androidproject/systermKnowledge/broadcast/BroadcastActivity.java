@@ -31,6 +31,7 @@ public class BroadcastActivity extends AppCompatActivity {
 
         // 取消注册
         unregisterReceiver(receiver);
+
     }
 
     // 静态注册
