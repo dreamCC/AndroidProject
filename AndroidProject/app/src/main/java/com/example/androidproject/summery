@@ -936,23 +936,44 @@
 
 12.23
 1、关于android的动画。android的动画主要分三种：
-    view animation，视图动画。
-    drawable animation，帧动画。
-    property animation，属性动画。
+    逐帧动画Frame，
+    补间动画Tween，
+    属性动画Property，
 
-2、View Animation，视图动画，可以通过xml或者代码实现。我们一般使用xml实现，增加可读性。
-    视图动画有四种：alpha、transition、scale、rotation。 也可以通过<set>标签，添加组合动画。
+    ios中的动画都是属于属性动画CAPropertyAnimation。CATransaction转场动画和CAGroupAnimation组动画。
+
+2、 补间动画，可以通过xml或者代码实现。我们一般使用xml实现，增加可读性。
+    视图动画（补间动画）有四种：alpha、transition、scale、rotation。 也可以通过<set>标签，添加组合动画。
     对应的是AlphaAnimation、TranslateAnimation、ScaleAnimation、RotationAnimation。都是集成Animation。
     通过view.startAnimation(animation); 来启动动画
+
+    补间动画一般都有Interpolator，表示动画的模式。和ios还是有区别的。
+    LinearInterpolator：动画以均匀的速度改变
+    AccelerateInterpolator：在动画开始的地方改变速度较慢，然后开始加速
+    AccelerateDecelerateInterpolator：在动画开始、结束的地方改变速度较慢，中间时加速
+    CycleInterpolator：动画循环播放特定次数，变化速度按正弦曲线改变： Math.sin(2 * mCycles * Math.PI * input)
+    DecelerateInterpolator：在动画开始的地方改变速度较快，然后开始减速
+    AnticipateInterpolator：反向，先向相反方向改变一段再加速播放
+    AnticipateOvershootInterpolator：开始的时候向后然后向前甩一定值后返回最后的值
+    BounceInterpolator： 跳跃，快到目的值时值会跳跃，如目的值100，后面的值可能依次为85，77，70，80，90，100
+    OvershottInterpolator：回弹，最后超出目的值然后缓慢改变到目的值
+
+
 
     anim文件夹
     anim文件夹下存放tween animation和frame animation
     xml文件里只有scale、rotate、translate、alpha、set五个标签
     在代码中使用AnimationUtils.loadAnimation（）方法加载
     使用View.setAnimation(Animation)为View加载动画，使用View.startAnimation()开启动画
-    animator文件夹
 
+    animator文件夹
     animator文件夹下存放property animation，即属性动画
     xml文件里有animator、objectAnimator和set三个标签
     在代码中使用AnimatorInflater.loadAnimator（）方法加载动画
     使用Animator.setTarget（View）为View加载动画，使用Animator.start（）开启动画
+
+3、逐帧动画Frame。
+    帧动画和ios中的CAKeyFrameAnimation是不一样的。ios中的帧动画，是属于属性动画的一种。而android中的帧动画就是逐帧显示图片所形成的动画。
+    类似ios中imageView.images。
+    android中通过AnimationDrawable实现，xml中对应的<animation-list> <item> 标签。
+
