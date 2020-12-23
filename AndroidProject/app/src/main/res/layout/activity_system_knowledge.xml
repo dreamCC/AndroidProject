@@ -92,6 +92,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ContentProvider"/>
+
+            <Button
+                android:id="@+id/btn_14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="File"/>
+
+            <Button
+                android:id="@+id/btn_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SharePreferences"/>
+
+            <Button
+                android:id="@+id/btn_16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="sqlite"/>
+
+            <Button
+                android:id="@+id/btn_17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="http"/>
+
+            <Button
+                android:id="@+id/btn_18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="xml"/>
+
+            <Button
+                android:id="@+id/btn_19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="json"/>
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

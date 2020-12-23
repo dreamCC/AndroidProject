@@ -12,16 +12,22 @@ import com.example.androidproject.R;
 import com.example.androidproject.systermKnowledge.broadcast.BroadcastActivity;
 import com.example.androidproject.systermKnowledge.configuration.ConfigurationActivity;
 import com.example.androidproject.systermKnowledge.contentProvider.ContentProviderActivity;
+import com.example.androidproject.systermKnowledge.fileSave.FileActivity;
 import com.example.androidproject.systermKnowledge.fragment.DynamicFragmentActivity;
 import com.example.androidproject.systermKnowledge.fragment.StaticFragmentActivity;
 import com.example.androidproject.systermKnowledge.gesture.GestureActivity;
 import com.example.androidproject.systermKnowledge.handler.HandlerActivity;
+import com.example.androidproject.systermKnowledge.http.HttpActivity;
 import com.example.androidproject.systermKnowledge.intent.IntentActivity;
 import com.example.androidproject.systermKnowledge.intent.LaunchModeActivity;
 import com.example.androidproject.systermKnowledge.intent.LifeRecycleActivity;
+import com.example.androidproject.systermKnowledge.json.JsonActivity;
 import com.example.androidproject.systermKnowledge.keyword.KeywordActivity;
 import com.example.androidproject.systermKnowledge.service.ServiceActivity;
+import com.example.androidproject.systermKnowledge.sharePreferences.SharePreferencesActivity;
+import com.example.androidproject.systermKnowledge.sqlite.SqliteActivity;
 import com.example.androidproject.systermKnowledge.thread.ThreadActivity;
+import com.example.androidproject.systermKnowledge.xml.XmlActivity;
 
 public class SystemKnowledgeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -37,7 +43,12 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
     private Button configuration;
     private Button service;
     private Button contentProvider;
-
+    private Button file;
+    private Button sharePreferences;
+    private Button sqlite;
+    private Button http;
+    private Button xml;
+    private Button json;
 
 
     @Override
@@ -86,6 +97,24 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
 
         contentProvider = findViewById(R.id.btn_13);
         contentProvider.setOnClickListener(this);
+
+        file = findViewById(R.id.btn_14);
+        file.setOnClickListener(this);
+
+        sharePreferences = findViewById(R.id.btn_15);
+        sharePreferences.setOnClickListener(this);
+
+        sqlite = findViewById(R.id.btn_16);
+        sqlite.setOnClickListener(this);
+
+        http = findViewById(R.id.btn_17);
+        http.setOnClickListener(this);
+
+        xml = findViewById(R.id.btn_18);
+        xml.setOnClickListener(this);
+
+        json = findViewById(R.id.btn_19);
+        json.setOnClickListener(this);
     }
 
     @Override
@@ -128,6 +157,24 @@ public class SystemKnowledgeActivity extends AppCompatActivity implements View.O
             startActivity(intent);
         }else if(v.getId() == R.id.btn_13) {
             Intent intent = new Intent(this, ContentProviderActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.btn_14) {
+            Intent intent = new Intent(this, FileActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.btn_15) {
+            Intent intent = new Intent(this, SharePreferencesActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.btn_16) {
+            Intent intent = new Intent(this, SqliteActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.btn_17) {
+            Intent intent = new Intent(this, HttpActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.btn_18) {
+            Intent intent = new Intent(this, XmlActivity.class);
+            startActivity(intent);
+        }else if(v.getId() == R.id.btn_19) {
+            Intent intent = new Intent(this, JsonActivity.class);
             startActivity(intent);
         }
     }

@@ -29,6 +29,7 @@ public class SystemUIActivity extends AppCompatActivity implements View.OnClickL
     private Button menu;
     private Button listView;
     private Button gridView;
+    private Button webView;
 
 
     @Override
@@ -86,6 +87,9 @@ public class SystemUIActivity extends AppCompatActivity implements View.OnClickL
 
         gridView = findViewById(R.id.btn_17);
         gridView.setOnClickListener(this);
+
+        webView = findViewById(R.id.btn_18);
+        webView.setOnClickListener(this);
     }
 
     // 点击事件
@@ -144,6 +148,9 @@ public class SystemUIActivity extends AppCompatActivity implements View.OnClickL
 
         }else if(v == gridView) {
 
+        }else if(v == webView) {
+            Intent intent = new Intent(this, WebViewActivity.class);
+            startActivity(intent);
         }
 
     }

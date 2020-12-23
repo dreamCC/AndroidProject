@@ -4,34 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".systermKnowledge.fileSave.FileActivity">
+    tools:context=".animation.AnimationActivity">
 
     <Button
-        android:id="@+id/btn_normal_save"
+        android:id="@+id/btn_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="viewAnimation"
+        android:text="viewAnimation"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="通过指定路径-写"/>
+        app:layout_constraintBottom_toTopOf="@id/btn_2"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
 
     <Button
-        android:id="@+id/btn_normal_write"
+        android:id="@+id/btn_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_normal_save"
-        android:text="普通指定路径-读"/>
+        android:onClick="drawableAnimation"
+        android:text="drawableAnimation"
+        app:layout_constraintTop_toBottomOf="@id/btn_1"
+        app:layout_constraintBottom_toTopOf="@id/btn_3"/>
 
     <Button
-        android:id="@+id/btn_ctx_read"
+        android:id="@+id/btn_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_normal_write"
-        android:text="通过context-读"/>
+        android:onClick="propertyAnimation"
+        android:text="propertyAnimation"
+        app:layout_constraintTop_toBottomOf="@id/btn_2"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <Button
-        android:id="@+id/btn_ctx_write"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_ctx_read"
-        android:text="通过context-写"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

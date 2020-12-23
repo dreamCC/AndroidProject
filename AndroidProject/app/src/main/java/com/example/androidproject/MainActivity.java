@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.androidproject.animation.AnimationActivity;
+import com.example.androidproject.drawable.DrawableActivity;
 import com.example.androidproject.listView.ListViewMainActivity;
 import com.example.androidproject.systermKnowledge.SystemKnowledgeActivity;
 import com.example.androidproject.systermUI.SystemUIActivity;
@@ -20,6 +22,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String kLogTag = "kLogTag";
     private Button systemUi, viewGroup, systemKnowledge;
     private Button listView;
+    private Button drawable;
+    private Button animation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +52,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         listView = findViewById(R.id.list_view);
         listView.setOnClickListener(this);
+
+        drawable = findViewById(R.id.drawable);
+        drawable.setOnClickListener(this);
+
+        animation = findViewById(R.id.animation);
+        animation.setOnClickListener(this);
     }
+
 
 
     @Override
@@ -63,6 +75,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }else if (v == listView) {
             Intent intent = new Intent(this, ListViewMainActivity.class);
+            startActivity(intent);
+        }else if (v == drawable) {
+            Intent intent = new Intent(this, DrawableActivity.class);
+            startActivity(intent);
+        }else if (v == animation) {
+            Intent intent = new Intent(this, AnimationActivity.class);
             startActivity(intent);
         }
     }
