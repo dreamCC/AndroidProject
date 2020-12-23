@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidproject.R;
 
-public class ViewAnimationActivity extends AppCompatActivity implements View.OnClickListener {
+public class TweenAnimationActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String TAG = "ViewAnimationActivity";
     private View animationV;

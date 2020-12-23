@@ -10,8 +10,8 @@
         android:id="@+id/btn_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="viewAnimation"
-        android:text="viewAnimation"
+        android:onClick="tweenAnimation"
+        android:text="tweenAnimation"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btn_2"
         app:layout_constraintVertical_chainStyle="packed"
@@ -21,8 +21,8 @@
         android:id="@+id/btn_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="drawableAnimation"
-        android:text="drawableAnimation"
+        android:onClick="keyFrameAnimation"
+        android:text="keyFrameAnimation"
         app:layout_constraintTop_toBottomOf="@id/btn_1"
         app:layout_constraintBottom_toTopOf="@id/btn_3"/>
 

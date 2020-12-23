@@ -17,17 +17,17 @@ public class AnimationActivity extends AppCompatActivity {
 
     }
 
-    // 视图动画
-    public void viewAnimation(View view) {
+    // 补间动画
+    public void tweenAnimation(View view) {
 
-        Intent intent = new Intent(this, ViewAnimationActivity.class);
+        Intent intent = new Intent(this, TweenAnimationActivity.class);
         startActivity(intent);
     }
 
     // 帧动画
-    public void drawableAnimation(View view) {
+    public void keyFrameAnimation(View view) {
 
-        Intent intent = new Intent(this, DrawableAnimationActivity.class);
+        Intent intent = new Intent(this, KeyFrameAnimationActivity.class);
         startActivity(intent);
     }
 

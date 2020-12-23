@@ -12,8 +12,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".animation.PropertyAnimationActivity"></activity>
-        <activity android:name=".animation.DrawableAnimationActivity" />
-        <activity android:name=".animation.ViewAnimationActivity" />
+        <activity android:name=".animation.KeyFrameAnimationActivity" />
+        <activity android:name=".animation.TweenAnimationActivity" />
         <activity android:name=".animation.AnimationActivity" />
         <activity android:name=".drawable.DrawableActivity" />
         <activity android:name=".systermKnowledge.json.JsonActivity" />
