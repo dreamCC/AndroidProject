@@ -54,7 +54,7 @@ public class HandlerActivity extends AppCompatActivity {
                     public void run() {
 
                         // 更新ui线程。
-                        Toast.makeText(HandlerActivity.this, "ui线程", Toast.LENGTH_SHORT).show();;
+                        Toast.makeText(HandlerActivity.this, "ui线程", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -67,7 +67,7 @@ public class HandlerActivity extends AppCompatActivity {
                     }
                 });
             }
-        }).start();;
+        }).start();
     }
 
     static class MineHandle extends Handler {

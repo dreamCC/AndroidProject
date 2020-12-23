@@ -165,5 +165,6 @@ public class ViewAnimationActivity extends AppCompatActivity implements View.OnC
         Animation xmlSetAnimation = AnimationUtils.loadAnimation(this, R.anim.set);
         xmlSetAnimation.setRepeatCount(-1);
         animationV.startAnimation(xmlSetAnimation);
+
     }
 }

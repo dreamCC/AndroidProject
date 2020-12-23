@@ -624,7 +624,7 @@
     动态最常用：
     1、getSupportFragmentManager(); 获取FragmentManager，是用来管理Activity中的Fragment的。
         常见方法，fragmentMng.findFragmentByTag\id来进行查询。
-    2、fragment.beginTransition(); 获取FragmentTransition，事务，用来添加、移除、替换Fragment。
+    2、fragmentMng.beginTransition(); 获取FragmentTransition，事务，用来添加、移除、替换Fragment。
         transition.add(); 添加。 // fragment进行一轮生命周期。
         transition.remove(); 移除。  // 移除生命周期，知道fragment调用deAttach();结束。 fragment、view都销毁
         transition.replace(); 替换。 // a.remove(); b.add(); 也就是a先移除，b在添加。
@@ -977,3 +977,8 @@
     类似ios中imageView.images。
     android中通过AnimationDrawable实现，xml中对应的<animation-list> <item> 标签。
 
+4、补间动画的缺点：
+    a、只有透明度、缩放、移动、旋转四种效果。
+    b、只能作用于view。
+    c、不能改变属性，比如如果Button添加Translate动画，那么并不会改变按钮的属性，这个时候点击按钮可能就没有效果了。
+        这一点很像ios中CAAnimation所产生的动画，该动画作用于CAPresentLayer上面，并不会影响CAModalLayer的属性。
