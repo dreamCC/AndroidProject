@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.androidproject.animation.AnimationActivity;
 import com.example.androidproject.drawable.DrawableActivity;
 import com.example.androidproject.listView.ListViewMainActivity;
+import com.example.androidproject.paint.PaintActivity;
 import com.example.androidproject.systermKnowledge.SystemKnowledgeActivity;
 import com.example.androidproject.systermUI.SystemUIActivity;
 import com.example.androidproject.viewGroup.ViewGroupActivity;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button listView;
     private Button drawable;
     private Button animation;
+    private Button paint;
 
 
     @Override
@@ -58,6 +60,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         animation = findViewById(R.id.animation);
         animation.setOnClickListener(this);
+
+        paint = findViewById(R.id.paint);
+        paint.setOnClickListener(this);
     }
 
 
@@ -81,6 +86,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }else if (v == animation) {
             Intent intent = new Intent(this, AnimationActivity.class);
+            startActivity(intent);
+        }else if (v == paint) {
+            Intent intent = new Intent(this, PaintActivity.class);
             startActivity(intent);
         }
     }

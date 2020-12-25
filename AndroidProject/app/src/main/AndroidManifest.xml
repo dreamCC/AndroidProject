@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".animation.PropertyAnimationActivity"></activity>
+        <activity android:name=".paint.PaintActivity"></activity>
+        <activity android:name=".animation.PropertyAnimationActivity" />
         <activity android:name=".animation.KeyFrameAnimationActivity" />
         <activity android:name=".animation.TweenAnimationActivity" />
         <activity android:name=".animation.AnimationActivity" />
@@ -125,14 +126,14 @@
             android:name="org.apache.http"
             android:required="false" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

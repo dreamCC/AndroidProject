@@ -987,4 +987,70 @@
     执行的动画不再局限于UI控件，可以对任意对象执行动画。
     属性动画是通过目标对象进行赋值修改其属性，所以上面按钮的问题就不会存在。
 
-    
+    属性动画：Animator。
+    常用类ValueAnimator extents Animator。
+    ObjectAnimator extents ValueAnimator。
+    属性动画，很像ios中CAPropertyAnimation（子类有CAKeyFrameAnimation和CABasicAnimation）。但是ios中的核心动画都是不会改变UI控件属性的，
+    只会沟盖板CAPresentLayer。
+
+    AnimatorSet组合动画，和补间动画中的AnimationSet功能差不多。
+    AnimatorSet extents Animator。
+    实现组合动画功能主要需要借助AnimatorSet这个类，这个类提供了一个play()方法，如果我们向这个方法中传入一个Animator对象(ValueAnimator或ObjectAnimator)
+    将会返回一个AnimatorSet.Builder的实例，AnimatorSet.Builder中包括以下四个方法：
+    after(Animator anim)   将现有动画插入到传入的动画之后执行
+    after(long delay)   将现有动画延迟指定毫秒后执行
+    before(Animator anim)   将现有动画插入到传入的动画之前执行
+    with(Animator anim)   将现有动画和传入的动画同时执行
+
+12.25
+1、Bitmap，相当于ios中，CGImageRef，操作的是位图，也就是原始图片。而实际上开发中，ios常操作UIImage。
+2、android中，加载图片的方式，通过drawable或者bitmap两种方式。ios中只能通过UIImage来进行加载。
+3、关于绘图。ios中通过CGContext上下文进行绘图，获取上下文的方式通过drawRect方法中直接UIGraphicsGetContext获取，
+    或者通过UIImageBeginGraphics来开启位图上下文，然后调用UIGraphicsGetContext来获取。
+
+    android和flutter进行绘图很像。
+    有三种重要的类，Canvas、Paint和Path。
+
+4、关于UI渲染过程。
+    ios，整个渲染过程包括CPU的计算和GPU的渲染。
+    底层绘制原理：
+    当我们改变frame、更新layer/view层级或者调用setNeedDisplay/setNeedLayout，这时候该view会标记为待处理，并且会提交到一个全局容器中。
+    苹果注册了一个 Observer 监听 BeforeWaiting(即将进入休眠) 和 Exit (即将退出Loop) 事件，回调去执行一个很长的函数：
+    _ZN2CA11Transaction17observer_callbackEP19__CFRunLoopObservermPv()。这个函数里会遍历所有待处理的 UIView/CAlayer
+     以执行实际的绘制和调整，并更新 UI 界面。
+     _ZN2CA11Transaction17observer_callbackEP19__CFRunLoopObservermPv()
+     QuartzCore:CA::Transaction::observer_callback:
+     CA::Transaction::commit();
+     CA::Context::commit_transaction();
+     CA::Layer::layout_and_display_if_needed();
+     CA::Layer::layout_if_needed();
+     [CALayer layoutSublayers];
+     [UIView layoutSubviews];
+     CA::Layer::display_if_needed();
+     [CALayer display];
+     [UIView drawRect];
+
+    因为苹果注册了一个Observer，可以监听Runloop，当runloop需要休眠的时候，Observer会调用上面的方法，查看是否有view/layer被标记刷新的对象。
+    如果没有runloop才会去休眠。如果有，就会进行cpu的计算+gpu的渲染，最后渲染到屏幕上。
+    在 VSync 信号到来后，系统图形服务会通过 CADisplayLink 等机制通知 App。
+    CPU的计算包括了drawRect方法。
+
+    每一个UIView都有一个layer，每一个layer都有个content，这个content指向的是一块缓存，叫做backing store
+    当UIView被绘制时（从 CA::Transaction::commit:以后），CPU执行drawRect，通过context将数据写入backing store
+    当backing store写完后，通过render server交给GPU去渲染，将backing store中的bitmap数据显示在屏幕上
+    所以在 drawRect 方法中 要首先获取 context。
+
+    CALayer的delegate就view。CALayerDelegate是非正式协议，不需要我们遵循。
+
+    1、尽量用轻量的对象代替重量的对象，可以对性能有所优化。比如 CALayer 比 UIView 要轻量，如果不需要响应触摸事件，用 CALayer 显示会更加合适。如果对象不涉及 UI 操作，则尽量放到后台线程去创建，但如果是包含了 CALayer 的控件，都只能在主线程创建和操作。
+    2、通过 Storyboard 创建视图对象时，其资源消耗会比直接通过代码创建对象要大非常多。
+    3、使用懒加载，尽量推迟对象创建的时间，并把对象的创建分散到多个任务中去。
+
+    图形的上下文 CGContextRef的创建历程。
+    • addsubview 的时候 触发的
+    • CPU会为layer分配一块内存用来绘制bitmap，叫做backing store
+    • layer创建指向这块bitmap缓冲区的指针，叫做CGContextRef
+    • 通过CoreGraphic的api，也叫Quartz2D，绘制bitmap
+    • 将layer的content指向生成的bitmap
+
+

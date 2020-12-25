@@ -42,6 +42,7 @@ public class TweenAnimationActivity extends AppCompatActivity implements View.On
         rotation.setOnClickListener(this);
         alpha.setOnClickListener(this);
         set.setOnClickListener(this);
+
     }
 
     @Override
