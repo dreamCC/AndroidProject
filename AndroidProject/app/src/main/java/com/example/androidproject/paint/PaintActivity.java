@@ -1,9 +1,11 @@
 package com.example.androidproject.paint;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ContentFrameLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.androidproject.R;
@@ -11,6 +13,7 @@ import com.example.androidproject.R;
 public class PaintActivity extends AppCompatActivity {
 
 
+    private String TAG = "PaintActivity";
     private ConstraintLayout contentView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +23,27 @@ public class PaintActivity extends AppCompatActivity {
         setContentView(contentView);
 
         didInitializeSubViews();
+
+        ContentFrameLayout sub = getWindow().getDecorView().findViewById(android.R.id.content);
+        Log.i(TAG, contentView.toString());
+        Log.i(TAG, sub.toString());
+
+
     }
 
     private void didInitializeSubViews() {
 
+        int di = (int) getResources().getDisplayMetrics().density;
+        ConstraintLayout.LayoutParams lp = new ConstraintLayout.LayoutParams(
+                200*di,
+                200*di);
+        lp.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
+        lp.topMargin = 100;
+        lp.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID;
+        lp.rightToRight = ConstraintLayout.LayoutParams.PARENT_ID;
         PaintView paintView = new PaintView(this);
-
+        paintView.setLayoutParams(lp);
         contentView.addView(paintView);
+
     }
 }

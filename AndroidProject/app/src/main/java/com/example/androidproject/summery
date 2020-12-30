@@ -1031,7 +1031,7 @@
      [UIView drawRect];
 
     因为苹果注册了一个Observer，可以监听Runloop，当runloop需要休眠的时候，Observer会调用上面的方法，查看是否有view/layer被标记刷新的对象。
-    如果没有runloop才会去休眠。如果有，就会进行cpu的计算+gpu的渲染，最后渲染到屏幕上。
+    如果没有，runloop才会去休眠。如果有，就会进行cpu的计算+gpu的渲染，最后渲染到屏幕上。
     在 VSync 信号到来后，系统图形服务会通过 CADisplayLink 等机制通知 App。
     CPU的计算包括了drawRect方法。
 
@@ -1047,10 +1047,52 @@
     3、使用懒加载，尽量推迟对象创建的时间，并把对象的创建分散到多个任务中去。
 
     图形的上下文 CGContextRef的创建历程。
-    • addsubview 的时候 触发的
+    • addSubview 的时候 触发的
     • CPU会为layer分配一块内存用来绘制bitmap，叫做backing store
     • layer创建指向这块bitmap缓冲区的指针，叫做CGContextRef
     • 通过CoreGraphic的api，也叫Quartz2D，绘制bitmap
     • 将layer的content指向生成的bitmap
+
+11.28
+1、android界面层级关系。
+    PhoneWindow extents Window。
+    其内容view是mContentParent。 mContentParent是mDecor，或者mDecor的子View。mContentParent是FrameLayout。
+    其内部screen_simple(LineLayout) + id/statusBarBackground(view)(状态栏）
+    其screen_simple(LineLayout) 有id/content(FrameLayout) + ViewStub(titleBar/ActionBar) （类似ios navigationBar）。
+    而我们创建的view就是添加到id/content上面的FrameLayout。
+
+2、ViewGroup.LayoutParams。是用来说明view在父控件中的位置的。
+    ViewGroup.MarginLayoutParams extents ViewGroup.LayoutParams 增加了margin属性。
+    而我们常用的xxxx.LayoutParams 都是继承自ViewGroup.MarginLayoutParams
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
