@@ -1053,4 +1053,38 @@
     • 通过CoreGraphic的api，也叫Quartz2D，绘制bitmap
     • 将layer的content指向生成的bitmap
 
+    GPU的工作原理。
+    1、将cpu绘制的数据从RAM搬到VRAM中。
+    2、将数据渲染到屏幕上。
 
+    GPU渲染屏幕有两种方式：
+    on-screen-rendering。在当前显示屏幕缓冲区中进行。
+    off-screen-rendering。在当前显示屏幕外新开辟一个缓冲区进行。离屏渲染会消耗额外的内存。
+    ios造成离屏渲染的原因：
+    shouldRasterize（光栅化）: 将图转化为一个个栅格组成的图象。 光栅化特点：每个元素对应帧缓冲区中的一像素。
+
+12.26
+1、android view的绘制过程。
+    android当启动一个activity，首先会创建activity实例，然后调用attach方法。
+    attach方法内部，会创建一个PhoneWindow。
+    注意android中的Window是一个抽象类，PhoneWindow是唯一实现。和ios中UIWindow还是有点区别的。
+    当activity，调用setContentView的时候，实际上内部调用了PhoneWindow.setContentView方法。
+    PhoneWindow的setContentView的内部实现：
+    1、判断有没有mContentParent，其实是一个FrameLayout类型的ViewGroup。
+    2、如果没有回调用installDecor，来创建DecorView。
+    3、DecorView是继承FrameLayout，用来描述窗口的视图。setContentView，会将view添加到DecorView的xml
+    上面，而且会将其id设置为content。
+    4、创建好DecorView后，将将DecorView解析好，放在mContenParent上面。
+        调用的是mLayoutInflate.inflate(layoutResId, mContentParent)。其中layoutResId就是DecorView的xml。
+    LayoutInflate的作用就是将xml解析成对应的View对象。
+    5、注意mLayoutInflate.inflate方法的内部实现。
+        其实就是解析xml资源的一个过程，内部有几个关键判断：
+        <include>作为根节点的时候回抛出异常。
+        <merge>标签，那么inflate方法中，parent != null，并且attachToRoot = true。也就是merge标签必须要添加到
+        Root容器中。
+        <merge>标签必须作为根节点。如果不是，会抛出异常。
+
+    当然android在引入AppCompactActivity（android 5.0之后）只有，为了适配，DecorView上面添加了一个SubDecorView。
+
+2、Activity的调用过程。
+    ActivityThread是程序main函数所在进程。
