@@ -1102,7 +1102,21 @@
     而我们常用的xxxx.LayoutParams 都是继承自ViewGroup.MarginLayoutParams
 
 
+1.25
+1、常用快捷键。
+    ctr + e  最近打开的文件
+    ctr + g  跳转到指定行
+    ctr + f  搜索
+    ctr + r  替换
+    ctr + j  代码块，快捷键
+    ctr + h  类的继承关系
 
+    ctr + alt + t 将代码块进行包括（比如添加一些判断等）
+    ctr + alt + l 将代码格式化
+    ctr + alt + h 方法的调用
+    ctr + alt + o 删除无用包
+
+    alt + insert 快速弹出插入的代码。比如 set get方法。
 
 
 

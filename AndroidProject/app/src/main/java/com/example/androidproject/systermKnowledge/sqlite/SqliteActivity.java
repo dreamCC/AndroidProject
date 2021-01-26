@@ -59,7 +59,7 @@ public class SqliteActivity extends AppCompatActivity {
         ContentValues updateValue = new ContentValues();
         updateValue.put("name", "David update");
         // whereClause = 表示的where条件。
-        db.update("person",updateValue, "name = ?", new String[]{"David 0"});
+        db.update("person", updateValue, "name = ?", new String[]{"David 0"});
     }
 
     public void query(View view) {

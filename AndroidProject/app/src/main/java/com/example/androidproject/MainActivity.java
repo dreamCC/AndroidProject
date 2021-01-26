@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
         systemUi = findViewById(R.id.system_ui);
         systemUi.setOnClickListener(this);
 
