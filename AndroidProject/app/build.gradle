@@ -113,4 +113,7 @@ dependencies {
 
     // android http网络请求
     implementation 'com.loopj.android:android-async-http:1.4.11'
+
+    // bottom bar
+    implementation 'com.roughike:bottom-bar:2.3.1'
 }

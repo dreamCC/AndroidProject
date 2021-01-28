@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+
+    <tab
+        id="@+id/tab_home"
+        title="首页"
+        icon="@drawable/tab_home"
+        />
+
+    <tab
+        id="@+id/tab_policy"
+        title="政务"
+        icon="@drawable/tab_policy" />
+
+    <tab
+        id="@+id/tab_service"
+        title="服务"
+        icon="@drawable/tab_serv"
+        />
+
+    <tab
+        id="@+id/tab_mine"
+        title="我的"
+        icon="@drawable/tab_mine"
+        />
+
+</tabs>

@@ -1118,8 +1118,22 @@
 
     alt + insert 快速弹出插入的代码。比如 set get方法。
 
+    mac版：
+    cmd + e 最近打开
+    cmd + f 搜索
+    cmd + r 替换
+    cmd + j 代码块，快捷键
+    ctr + h 类的继承关系
 
+    ctr + option + h 方法的调用情况
+    ctr + option + o 删除无用包
+    cmd + option + l 将代码格式化
 
+1.28
+1、android导入包的三种方式。
+    gradle。
+    创建libs文件夹，然后加入jar包，通过右键add as lib的方式添加，然后dependencies里面添加
+    解压jar包，添加到项目中。
 
 
 
