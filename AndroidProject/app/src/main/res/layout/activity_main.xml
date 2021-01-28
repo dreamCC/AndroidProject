@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.fragment.app.FragmentTabHost
+    android:id="@android:id/tabhost"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,20 +8,23 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/content_container"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <com.roughike.bottombar.BottomBar
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="49dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:bb_tabXmlResource="@xml/bottombar_menu"
-        app:bb_activeTabColor="@android:color/transparent"
-        app:bb_inActiveTabColor="@android:color/transparent"
-        />
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_gravity="bottom"/>
+
+    </LinearLayout>
+
+</androidx.fragment.app.FragmentTabHost>

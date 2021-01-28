@@ -1128,6 +1128,7 @@
     ctr + option + h 方法的调用情况
     ctr + option + o 删除无用包
     cmd + option + l 将代码格式化
+    cmd + option + f 快速抽取变量。
 
 1.28
 1、android导入包的三种方式。
@@ -1135,7 +1136,23 @@
     创建libs文件夹，然后加入jar包，通过右键add as lib的方式添加，然后dependencies里面添加
     解压jar包，添加到项目中。
 
+2、android底部导航实现方式。
+    1、使用第三方：BottomBar。
+    2、FragmentTabHost。
+    3、BottomNavigationView。
 
+3、List和Map都是接口，表示数组和字典。
+    ArrayList 实现了List。
+    HashMap 实现了Map， 线程不安全，运行null值。  HashTable继承Dictionary，是线程安全的，不允许null值。
+
+    Java中数组和集合的概念。
+    数组其实很想c语言中的数组。同时包括二维甚至多维数组。
+    Type[] ary = {type, type2, type3}; 这种方式声明。 长度固定，类型一样。
+
+    集合List是interface。一般使用ArrayList。长度是不一样的。
+    所以一般长度固定，我们使用数组，不固定我们使用集合。同时两者是可以相互转换的。
+    list.toArray() 将集合转换成数组。
+    Arrays.asList(list) 将数组转成集合。
 
 
 
