@@ -1,0 +1,405 @@
+1.2
+1、java： java se（标准版）、java me（现在没有）、java ee（企业版）。
+2、 jre： java运行环境。能够运行java代码。包含了java虚拟机jvm、java基础类库。 是java运行所需要的环境，是供想运行java代码的用户使用的。
+    jdk： java开发工具。是程序员编写java程序所需要的开发包，是供程序员使用的。jdk包含了jre，同时还包含了编译java源码的javac，以及一些
+    调试jconsole、jvisualvm等工具。
+
+3、java基础数据类型。byte、char、int、short、long、boolen、float、double。
+    long a = 12345L。表示long类型需要用L，因为小写l太像1了。
+
+4、原码、补码和反码。
+    因为计算机只有0和1。所以为了存储正负数，就将最高位作为符号位。
+    比如+7的原码。
+    0000 0111
+    -7的原码：
+    1000 0111。 最高位1表示负数，0表示正数。
+
+    反码：
+    负数符号位不变，其它为取反。正数的返回不变。
+    比如-7的反码：
+    1111 1000
+    +7的反码：
+    0000 0111
+
+    补码：
+    正数的补码还是原码。负数的补码就是反码+1.
+    -7的补码：
+    1111 1001
+    +7的补码：
+    0000 0111
+
+    引入反码和补码的主要是为了计算的。
+    计算机存储使用的原码存储。 计算用的是补码。
+    因为原码计算会出现错误。比如-7 加 + 7，如果用原码计算就是 0000 0111 + 1000 0111 = 1000 1110，明显不是我们想要的结果0。
+
+1.3
+1、java声明一个变量的初始化值（当然oc也有初始化值，但是swift、flutter没有）：
+    整数类型：0
+    小数类型：0.0
+    布尔类型：false
+    字符类型：'\u0000' 因为字符类型是2个字节，16位表示。\u表示Unicode编码，后面是16进制的四个0，刚好也就是16位。
+    引用数据类型： null
+
+2、java中，对象在内存中的分配情况。
+    当我们new 一个对象后。 会将对象的指针放在栈空间，实体值放在堆控件。
+    当堆内存中对象，没有指针引用，jvm的垃圾回收机制就会将其回收。
+    栈内存中不存在回收，只要不用了，就弹栈。
+
+3、数组越界异常：ArrayIndexOutOfBoundsException; 数组索引越界崩溃。
+    直接打印数组：[I@ec19835， 其中[ 表示一维数组, [[ 表示二维数组， I表示int类型，@后面的16进制地址表示对象地址。
+    空指针异常：NullPointException； 空指针异常。
+
+    数组：
+    1、通过下表取值，ary[index]
+    2、取数组长度，ary.length
+
+4、测试类和使用类。测试类一般和文件名是一样的。
+
+5、成员变量和局部变量的区别。
+    成员变量：存放在内存堆中。有默认初始化值。
+    局部变量：存放在内存栈中。必须进行赋值。
+
+6、匿名对象（没有名字的对象）。
+
+7、类的封装。
+    一般将属性定义为私有的private。 然后提供set、get方法。
+    java中的成员变量一般都是设计成私有的。
+
+8、构造方法。
+   默认系统给一个空参的构造方法。
+   如果自己定义了构造方法，那么系统不会提供空参构造方法。
+
+9、静态关键字static特点。
+    a、随着类的加载而加载。也就是当使用该类的时候就加载。
+    b、优先于类的加载。 随着类的字节码文件加载而加载。
+    c、被类的所有对象共享。
+
+    静态变量也叫类变量。而在swift中，会将静态变量和类变量分开，用static和class两个关键字表示。
+
+    class 只能修饰class类里面的计算属性和方法， 子类可以重写。
+    static 可以修饰class、enum、struct的存储属性和计算属性，子类不可以重写。
+
+10、Math类属性java.lang包下，使用不许要导包。
+    需要了解Math类的一些常用方法。
+
+11、代码块。
+    1、局部代码块。
+    2、构造代码块，先与构造方法调用。
+         class Demo {
+            {
+             // 构造代码块，先于构造方法调用，也就是每次进行初始化的时候进行。
+            }
+            public Demo() {
+
+            }
+         }
+    3、静态代码块。随着类的加载而加载，而且只会执行一次。
+        class Demo {
+
+            static{
+                // 静态代码块，随着类的加载而执行，而且只执行一次。
+                // 一般用于加载驱动，有点类似initialize方法。
+            }
+        }
+
+12、对象的三大特性：封装、继承和多态。
+    多态就是一个物体的多种形态。也就是父类引用指向子类对象。 Father a = new Child();  这种形式就是多态。
+    多态：必须要有继承和重写。
+    Class Fu {
+        int num = 10;
+    }
+
+    class Zi {
+        int num = 20;
+    }
+
+    Fu f = new Zi();
+    f.num 的结果是10。
+    注：多态中的成员变量，编译看左边，运行看左边。
+
+13、抽象类。
+    抽象类可以有非抽象方法。
+    抽象方法必须是有抽象类。
+    抽象类不能进行实例的（因为是抽象的）。
+    抽象类和普通类除了可以有抽象方法，其他的都是一样的。也可以有构造方法。
+
+14、接口。
+    接口中所有的方法都是抽象方法。需要实现类去实现。
+    接口中所有的变量都是常量，而且默认都是 public  static final 三个关键字，所以实现类是不能进行赋值的。而且只能进Class.进行取值。
+    interface Inter {
+        public static final int num = 10; // 接口中的变量
+
+        public void method(); // 接口中的方法是public, 重写接口中的方法必须是public的。
+    }
+
+    接口类似ios中的protocol。但是在oc中protocol是不能定义成员变量的，可以添加属性，但是要重写set、get方法。
+    @protocol XDelegate<NSObject> {
+        int _age; // 会报错
+    }
+
+    @end
+
+    swift 中protocol是可以添加成员变量的。但是不能有初始化值。方法不能有body，也就是不能实现的，这和interface和oc中的protocol是一样的。
+    protocol XDelegate {
+        var age: Int {set get} // 只能这样写。
+    }
+
+    在dart中没有interface关键字，dart的官方解释就是任意class都是interface。 当然也可以使用mixin、abstract进行设计。
+
+15、类与类之间是但继承。extends。
+    类与接口直接是实现关系。implement。
+    接口与接口直接是多继承。extends。
+
+16、抽象类和接口之间区别。 主要是设计理念的差异。
+    抽象类定义的是继承关系中的共性功能。
+    接口定义的是该继承体系中的扩展功能。
+
+
+1.4
+1、包名package。 包名放在第一位。  当我们创建文件的时候，需要通过包名创建。
+    如果使用android studio，默认创建文件的包名，就是当前文件所在路径。
+    不同包名间是不能访问的。这也是为什么我们需要用public 修饰类的主要原因。
+
+    这个包名和ios有很大区别，首先oc中不同文件夹下面是需要导入头文件的。但是导入的是通过 import "className"; 就可以。
+        因为默认会将前面加上module的路径。
+    如果在swift中，同一个module是共用一个命名空间的，所以在同一个module下面是不需要导包的。
+
+    导包是通过import 包名.className; 这点和oc 还是不一样的。 而且命名的方式也是不一样的。
+
+2、java中的权限修饰符。
+    private 默认 protect public。
+
+3、内部类。可以说是java的一个特点，在swift中也有。但是oc和dart中没有内部类。
+    java中有成员内部类和静态内部类。
+    Outer.Inner in = new Outer().new Inner();
+    内部类访问外部类成员变量是可以直接使用， 相当于Outer.class.age。
+
+    在swift中，内部类更像是静态内部类。 而且内部类没有 static class 这种写法，默认就是成员内部类。
+    Outer.Inner in = Outer.Inner();
+    内部类是不能直接使用外部类的，需要获取外部类对象，也就是说swift中，内部类和外部类有很明显的界限。
+
+4、局部内部类。
+    也就是方法里面创建内部类。 swift也是有局部内部类的。 但是使用的很少。
+
+    java中的局部内部类想要使用局部属性，需要定义为final类型。swift是不允许访问外部属性的。Class declaration cannot close over value 'age' defined in outer scope
+    需要用final的根本原因就是：方法和类在内存中释放的时机不一样，方法调用完后，方法会出栈，这个时候方法里面的局部变量全部会销毁，
+    但是方法里面的局部类的指针都没有了，但又不会立马销毁，和jvm的垃圾回收机制有关，所以这个时候在使用局部变量就会报错。加上final相当于
+    将局部类别成了常量，存放在常量去，所以才能使用。
+
+
+5、匿名内部类。使用的比较多。
+    首先我们需要知道有名字的内部类实现外部接口的实现。
+
+    匿名内部类是不需要有名内部类。其格式。new 接口或类名() { 需要重写的方法 }  这种相当于创建。
+
+    匿名内部类的方法调用： 建议一般有一个方法的时候使用。
+    Inter i = new Inter() {
+
+        void method1() {}
+
+        void method2() {}
+    };
+    i.method1();
+    i.method2();
+
+6、java常见对象。
+    Object, 所有类的基类。 属于Java.lang包下。
+        o.hasCode(); 返回对象的hash值。 native 关键字表示借助底层资源。
+        o.getClass(); 返回对象的运行时类。 如果有包名，我们发现类名就是 包名.Class。
+        o.toString(); 返回包名@9f06a27 ，后面其实就是Integer.toHexString(hashCode())。
+            源码： getClass().getName() + "@" + Integer.toHexString(hashCode());
+            我们直接打印对象，其实就是打印toString方法。有点类似ios中description方法(注：swift将description成了协议）。
+        o.equals(); 返回的对象是否相等。
+            源码： (this == obj); 表示比较的是地址。
+            我们可以进行重写。进行属性的比较。
+            常见的String、ArrayList、HashMap都进行了重写，所以我们使用这些常用类是可以使用equal的。
+
+        == 和 equals两者间的区别。
+        == 是比较运算符。基本数据类型比较的是值，引用类型比较的是地址。
+        equals只能比较引用数据类型。所有对象都会继承Object对象方法。 如果没有重写就是比较地址。
+        swift中 == 是Equalable协议里面。 重写这个方法就可以。
+
+1.5
+1、String字符串。 相当于字符数组。
+    String a = "abc" 相当于 aAry = {'a', 'b', 'c'};
+    String c = new String(aAry);
+
+    String是可以通过 + ，进行各个类型串联。其内部就是使用StringBuilder活StringBuffer来进行处理的。
+
+    String重写了toString方法，返回字符串的值。所以可以使用print方法进行打印。因为默认对象打印，是包名.name@hasCode的16进制。
+
+    常用方法：
+    String(byte[]); 通过计算机内置编码表，将计算机存储的值转换成字符串。
+        byte[] bytes = {97, 98, 99}
+        String str = new String(bytes); str = abc。
+            相当于byte占一个字节，8位。-128 ~ 127之间。 127 = 2^7次方。
+
+
+    String a = "abc";
+    String b = "abc";
+    a == b和a.equals(b)都是true。
+    其跟本原因是，String保存在常量去，当调用b的时候，因为发现"abc"已经在常量区中，所以不会创建新对象。
+    == 比较的是对象地址。
+
+    new String("abc") 创建了两个对象，正如上面说的"abc"保存在常量区，调用new String的时候，会创建一个对象放在堆中。
+    new String("abc")  如果写两次，就创建了三个对象。
+
+    String a = "a" + "b" + "c";
+    String b = "abc"
+    a == b, a.equals(b)  都是true。因为java有常量优化机制。
+
+    比较方法。
+    equals，
+    equalsIgnoreCase, 比较且忽略大小写
+    contains，判断是否包含
+    startWith，
+    endWith，
+    isEmpty
+
+    获取方法。
+    length()，长度。
+    charAt()，获取指定index的char。
+    indexOf，获取索引。
+    subStringOf, 左臂右开。
+
+    转换方法。
+    getBytes(),将字符串转换成bytes。 编码过程，和前面的刚好相反。
+    toCharArray()
+    toLowercase 转换成小写
+    toUpperCase 转换成大写
+    contact 连接
+    valueOf 将任意类型转换成字符串，其实内部就是用来String的构造方法。
+
+1.6
+1、StringBuffer。
+
+    基本数据类型对应的封装类。这和ios就很不一样了，因为swift有extent，而基本数据类型又定义成结构体。所以，都成了扩展方法。
+    int Integer
+    byte Byte
+    short Short
+    long  Long
+    float Float
+    double Double
+    char Character
+    boolean Boolean
+
+    数组   Arrays
+
+    StringBuffer是jdk1.0出现的，是线程安全的可变字符串。
+
+    增
+    sb.append();
+    sb.insert();
+
+    删 在java中，删除如果是区间，一般都是包含头不包含尾。
+    sb.delete
+
+    替换
+    sb.replace
+
+    子字符串
+    sb.subString
+
+    翻转
+    sb.reverse
+
+    String 与 StringBuffer的转换。
+
+1.7
+1、StringBuilder，其方法和StringBuffer是一样的。主要区别是StringBuilder是线程不安全的，但是效率很高。
+    属于JDK 1.5。
+
+2、Arrays。属于Util包，使用的时候需要导包。
+    里面的所有方法是静态的。
+
+    Arrays.toString
+    Arrays.sort
+    Arrays.binarySearch 二分叉发查找， 返回查找到的位置的index。
+
+
+3、基本数据类型包装类。 主要是为了处理基本数据类型不是对象问题。大部分是静态方法。
+    int Integer, String 转 int，需要借助Integer对象。 而int转String，直接"" + 就可以， 也可以使用valueOf
+        Integer i = 12; 基本数据类型的自动装箱。 直接使用new Integer(12)。 比较麻烦。
+        int x = i + 12; 对象的自动拆箱。
+        也就是基本数据类型和对象直接是可以相互转换的。
+
+        当Integer的赋值在-128-127直接，不会创建多个对象。
+        也就是底层有个数组，存放-128到127直接的Integer对象，当进行赋值的时候回直接取值，而不会重新创建对象。
+
+    byte Byte
+    short Short
+    long  Long
+    float Float
+    double Double
+    char Character // 没有parse方法。
+    boolean Boolean
+
+    跟基本数据类型有关的计算Math类。
+
+    oc中并没有提供基础数据类型对应的对象。
+    常用的一些方法已经通过 全局方法进行控制了。比如floor、ceil（取最小，不小于原来的数）。
+    swift中直接将基础数据类型定义成结构体了，而swift中结构体直接就有相关方法。
+
+
+
+4、正则表达式。
+    "".matches(regex) 直接使用正则表达式。
+    其实内部就是使用了，Pattern和Matcher 两个类。
+
+    Pattern p = Pattern.compile(regex);
+    Matcher m = p.matcher(input);
+    return m.matches();
+
+    dart中使用RegRex对象。
+    ios中NSPredicate、NSRegularExpression
+
+5、Android SDK并不包含jdk，只是包含jdk中的一些类，并进行了修建。
+    1.Android SDK基本包含rt.jar基础类库但是并不全部包括，剔除了rt.jar的部分基础类
+
+    2.Android SDK不包括虚拟机但JDK包括虚拟机，Android的Darvit虚拟机安装在Android设备上
+
+    3.Android SDK和JDK编译工具都是将java文件编译成各自虚拟机能够识别的编码
+
+
+6、Math常用的方法。
+    有很多方法，都是静态方法。
+    floor、ceil、pow、abs等。
+
+7、Random生成伪随机数。
+    Random() // 通过时间的毫秒值。
+    Random(11) //  通过指定值，生成的随机数。生成的值是固定不变的。
+
+8、System类。常见的System.in 和 System.out
+
+    System.gc(); 启动垃圾回收。 实际上java有自动回收，所以不需要手动调用回收。
+
+    System.exit(0); 退出虚拟机。 一般传0
+
+    System.currentTimeMillis()。当前时间的毫秒值。距离1970年1月1日的毫秒值。
+
+9、BigInteger。 能够存放很大的数。
+     有 + - * /
+     add 、subtract 、multiply 、divide 、divideAndRemainder(除数和余数)
+
+    BigDecimal。 是为了更精确的计算小数。
+    一般使用new BigDecimal("") 这种写法进行计算。
+    同样有加 减 乘 除。
+    类似ios中，NSDecimalNumber。
+
+10、Date。抽象类，时间类。java.util 包。
+    两个构造方法。
+    date.getTimer() 获取当前时间对象的毫秒值。
+
+    DateFormat // 日期的格式化。这个和ios很像哦。
+    我们一般使用其子类，SimpleDataFormat。
+    DateFormat.getInstance() 其实获取的就是SimpleDateFormat
+
+    flutter中使用的是DateTimer。
+
+11、Calendar。日历类。同样也是抽象类。
+    Calendar.getInstance(); 获取日历对象。
+    通过特殊的字段获取日期值。
+
+    add、set对日期进行设置。
+
+    获取一年二月有多少天，1、设置日期当年的3月1日。 2、通过add进行-1。 3、然后获取值。

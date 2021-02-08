@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements TabHost.OnTabChan
     private TabItem previousItem;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements TabHost.OnTabChan
             textView.setText(getTitleString());
         }
 
-        // setter & getter
+
         public int getImageNormal() {
             return imageNormal;
         }

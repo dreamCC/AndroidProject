@@ -11,7 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainActivity"
+        <activity android:name=".java.Arrays.ArraysActivity"></activity>
+        <activity android:name=".java.String.StringActivity" />
+        <activity android:name=".java.常见类.ClassActivity" />
+        <activity android:name=".java.内部类.InnerClassActivity" />
+        <activity android:name=".java.包名.PackageActivity" />
+        <activity android:name=".java.条件语句.ConditionActivity" />
+        <activity android:name=".java.基础数据类型.BasicTypeActivity" />
+        <activity
+            android:name=".BottomNavigationViewActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".paint.PaintActivity" />
         <activity android:name=".animation.PropertyAnimationActivity" />
         <activity android:name=".animation.KeyFrameAnimationActivity" />

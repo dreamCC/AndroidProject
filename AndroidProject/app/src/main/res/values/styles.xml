@@ -28,4 +28,9 @@
     <style name="mRatingBar" parent="@style/Widget.AppCompat.RatingBar">
         <item name="android:progressDrawable">@drawable/rating_bar</item>
     </style>
+
+    <style name="BottomBarTitleStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
