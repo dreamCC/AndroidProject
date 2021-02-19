@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.io.File;
+import java.io.FileInputStream;
 
 public class BottomNavigationViewActivity extends AppCompatActivity {
 
@@ -25,12 +25,32 @@ public class BottomNavigationViewActivity extends AppCompatActivity {
         initBottomNav();
 
 
-        // 创建当前时间--
-        Date date = new Date();
 
 
-        Calendar.getInstance();
+        File file = new File(getFilesDir() + "/itcast");
+
+        try {
+
+            file.mkdirs();
+
+            file.renameTo(new File(getFilesDir() + "/itcast1"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FileInputStream fis = new FileInputStream(file);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
+
+
+
 
 
 
@@ -71,4 +91,5 @@ public class BottomNavigationViewActivity extends AppCompatActivity {
         super.finalize();
     }
 }
+
 

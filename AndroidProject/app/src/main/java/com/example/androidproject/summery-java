@@ -126,6 +126,7 @@
 14、接口。
     接口中所有的方法都是抽象方法。需要实现类去实现。
     接口中所有的变量都是常量，而且默认都是 public  static final 三个关键字，所以实现类是不能进行赋值的。而且只能进Class.进行取值。
+    因为接口不能进行实例化，如果能够声明成员变量，那么我们如何访问呢。
     interface Inter {
         public static final int num = 10; // 接口中的变量
 
@@ -403,3 +404,195 @@
     add、set对日期进行设置。
 
     获取一年二月有多少天，1、设置日期当年的3月1日。 2、通过add进行-1。 3、然后获取值。
+
+1.8
+1、数组和集合。
+    差异：
+    数组能存储基本数据类型和引用数据类型。
+    集合只能存储引用数据类型。
+
+    数组长度固定。
+    集合长度会随着内容的增加而增加。
+
+    如果内容固定建议用数组。内容不固定建议使用集合。
+
+2、Collection接口。所有的集合都是实现了该方法。
+    内部有add、remove、clear、container、toArray、Size、Iterator（迭代器）等方法。
+    Iterator，也是接口有hasNext()、next()等迭代方法。
+
+    // 这种遍历以前没用过
+    for(Iterator i = collection.iterator(); i.hasNext(); ){
+
+    }
+
+    Iterator i = collection.iterator();
+    while(i.hasNext()){
+        i.next();
+    }
+
+
+    CharSequence，其实String、StringBuilder和StringBuffer都是实现了该协议。
+    内部有length、charAt等和Char有关的方法。
+
+2.13
+1、集合体系。
+
+    Collection 根接口。 下面有List和Set两种接口。
+    List有序、可重复。   Set无序、不可重复。因为内部是通过自己的一套算法存取的。
+    ArrayList和LinkedList。    HashSet和TreeSet。
+
+2、数组。增删慢，查找和修改快。
+    ArrayList，内部是数组结构的。线程不安全。
+
+    链表。查找和修改慢（逐个问）， 增删快。 主要是因为其链表结构有关系。
+    LinkList，是链表结构的。线程不安全
+
+    Vector是线程安全的。
+
+3、右移一位。除以2的意思。 比如，let a = 40 >> 1， a = 20。
+
+4、泛型。
+    泛型类的定义和swift一样。
+    泛型interface，其实和泛型类是一样的。 但是和swift中泛型协议有区别。
+    泛型方法和swift是不一样的。
+
+    public <T> void gotoTest(T input) {
+
+    }
+
+    而swift中，泛型方法的声明更加好理解。
+
+5、HashSet。
+    无序，不重复。主要根据内部hash值，进行排序的。
+    其内部原理就是，先调用HashCode方法，获取hash值，如果hash值相同，会调用equals方法，进而确定是否重复。
+
+    LinkHashSet，能够保证add的顺序。
+
+    TreeSet。TreeSet可以对集合中的元素排序。需要配合Compare协议。 利用compareTo方法进行比较。二叉树比较。
+
+   其实和ios中的NSMutableSet是一样的。不重复是值，通过hash值计算，和equal方法来进行比较。
+
+   如果hash值不一样，那么直接存入，如果一样则比较equal方法，为true不存，为false存入。
+
+2.18
+1、Map。是一个接口。 实现的子类有HashMap、TreeMap、LinkedHashMap。
+    Set的子类，实现其实就是HashMap，因为字典的key必须是唯一且不能重复。所以，Map很适合。
+
+    java中的Dictionary是jdk 1.0出的，是HashTable继承的抽象类。
+    和jdk 1.2之后出的Map是不一样的。
+
+2、java中的异常。
+    Throwable继承Object。有两个子类，Error和Exception。
+
+    我们主要关注Exception。其中有RuntimeException为运行时异常，其它的位编译时异常。
+    而我们常见的就是RuntimeException。
+    一般是程序的错误操作，程序员是可以解除。
+    ClassCaseException
+
+    编译时异常，一般是编译报的异常，需要我们做处理的。
+
+    抛异常的过程，1、创建异常对象。 2、将异常往上抛。 3、当没有处理异常，虚拟机会报错。
+
+    异常处理的方式：
+    try  catch finally。
+    throws将异常跑出去。
+
+    一般路径的话，使用\\，因为\表示的是转义字符。
+
+    多个try catch的实现方式。
+    执行顺序，从上往下执行。
+    try {
+
+    } catch(xxxException) {
+
+    } catch(xxx2Exception) {
+
+    } ...... 可以有多个处理。
+
+
+    // 新特性。 可以在一个catch中，处理多个Exception。
+    try {
+
+    } catch (ArithmeticException  | ArrayIndexOutOfBoundsException e2) {
+
+    }
+
+
+    Exception，的父类Throwable类有几个常用方法。
+     e2.printStackTrace(); // 默认，java虚拟机就是调用该方法。
+     e2.getMessage();
+     e2.toString();
+
+
+    throws 如果抛的是RuntimeException，那么调用方法的时候就不会报错，因为是运行的时候异常。
+            如果抛的是编译时异常，那么就需要对异常进行处理，不然会报错。
+
+    // 这种写法和ios还是有区别的。 ios仅仅是有throws关键字就可以了。
+    private void testThrowsException() throws Exception {
+
+    }
+
+    // throw关键字。是进行错误抛掷的。 这个和ios还是很像的。
+
+
+    finally关键字。释放资源，一定会执行的代码。
+    可以使用。try catch finally。 try finally。
+
+    finalize(); 对象释放的时候会调用。
+
+3、自定义异常。
+
+2.19
+1、File。确切的说，指的是路径。 相当于ios中的FileManager。
+    路径分：绝对路径和相对路径。
+    绝对路径也是全路径。
+    相对路径是File("xxx.text")这就是相对路径，默认是项目是项目下面。
+
+    // 构造方法。
+    File("文件夹", "文件");
+
+    常见方法。
+    file.createNewFile() 创建文件
+    file.mkdir()  创建文件夹 。 不管名字是什么，
+    file.mkdirs(）创建多级文件夹
+
+    // 删除
+    file.delete() 如果是文件，直接删除。如果是文件夹，需要确保文件夹为空。
+
+    // 改名字
+    file.renameTo(des)。 如果是同一个路径下，相当于改名字。如果是不同路径下，就是改名，并剪切。
+
+    // 判断
+    file.isXXX   等判断条件。
+
+    // 获取
+    getAbsolutePath() 获取绝对路径
+    getPath() 获取相对路径
+    getName(） 获取问价、文件夹的名字。
+    length()   获取文件大小。 如果想要获取文件夹📂大小，就需要递归遍历每个文件大小。
+
+    总结： 文件和文件夹处理的细节。
+    1、文件。file的所有方法都可以使用。
+    2、文件夹。 不能delete（除非文件夹为空）、length这些删除和大小的功能。
+
+    计算机最小的存储单位是字节byte。
+
+2、递归。简单的说就是方法自己调用自己。
+    递归和for循环的区别就是for知道循环次数。
+
+    // 递归的实现，只需要确定弹栈的条件就可以。
+    int func(int num) {
+        if(num == 1) return 1;
+        return num * func(num - 1);
+    }
+
+3、IO流。
+    IO流，输入流、输出流。字节流、字符流。
+    字节流父类: InputStream、OutputStream。
+    字符流：Reader、Writer。
+
+    常用类：
+    FileInputStream。
+
+
+
