@@ -29,8 +29,15 @@
     0000 0111
 
     引入反码和补码的主要是为了计算的。
-    计算机存储使用的原码存储。 计算用的是补码。
+    计算机存储和计算使用的补码。
     因为原码计算会出现错误。比如-7 加 + 7，如果用原码计算就是 0000 0111 + 1000 0111 = 1000 1110，明显不是我们想要的结果0。
+
+    其实计算机计算，使用+ - * /。 其实*就是加法的简单计算，可以用加法表示，比如 3*4 = 3 + 3 + 3 + 3 。
+    而/就是-的简单表示。比如6 / 2 = 6 - 2 - 2 - 2 ，表示6减2减了3次，所以6除以2等于3。
+    而计算机就是利用这些最基本的规律，遇到加减乘除时候，都是按加法和符号位参与计算来表示。这和计算机设计有关。
+
+    CPU 的基本单元 ALU 模块。在ALU里，加法是最基本的运算。通过程序，乘法可以转换为加分，除法可以转换为减法。
+    补码表示，则可以让减法直接转换为加法。这样，ALU 核心只需要加法器即可满足功能，加法器可以通过集成电路中的晶体管来实现。
 
 1.3
 1、java声明一个变量的初始化值（当然oc也有初始化值，但是swift、flutter没有）：
@@ -592,7 +599,222 @@
     字符流：Reader、Writer。
 
     常用类：
-    FileInputStream。
+    FileInputStream。 字节流。 常见方法read。 read方法像一个指针，没读一次就会向后移动一次。
+                       当返回-1，表示结束。
+                       int read = fis.read()； 用int接受而不用byte接收的原因，因为byte 当接收到，11111111 时候，其实就是-1。那么
+                       用返回值 = -1来表示就会出错。 但是用int就收，就会将前面加上 24个0，那么实际上就是 255，所以不会出错。
+            fis.available() 获取文件的字节数。
 
 
+    FileOutputStream。字节流。 注意构造方法，后面append，参数，表示是否追加，也就是如果没有append参数，那么每次运行都会清空文件内容。
+           fos.write(int b)； 表示写一个字节。 int b来表示一个字节对于的编码表。
+                    如果没有会创建相应的文件。
+                    如果有则会清空内容，然后在创建。
+           fos.close()。
 
+
+    读写文件，我们可以一个一个的读写，也可以一次读完。使用关键方法fis.available() 方法。
+    // 这种方法的坏处就是，定义的数组可能很大，也就是有可能造成内存溢出。
+
+    常见方法就是折中的办法，也就是自定义个小数组。
+    定义小数组面临的问题：
+    int len = read(arr);  返回值是读取的有效长度。如果没有则返回-1。
+    如果读到最后，可能剩余的字节数不是定义字节数，那么就会出错。
+    fos.write(arr, 0, len)； 使用该方法进行写，防止越界。 注意off一般定义为0。 一般定义1024的整数倍。
+
+3、BufferInputStream、BufferOutputStream。底层有相应的缓存区。内部缓冲区为 8192 = 1024*8 即8k。
+    其原理需要了解。
+    1、读8192到BufferInputStream中的内存中。
+    2、read(）读一个，就是从8192内存中读一个，这样的效率就比硬盘->内存中的效率高。
+
+    里面也是相应的接口。但是效率比FileInputStream和FileOutputStream效率高的原因。
+
+4、flush和close的区别。
+    flush只有BufferInputStream和BufferOutputStream才有该方法。
+    不调用close，不会释放资源，调用BufferInputStream的时候可能会出现错误。
+    flush，刷新缓存区的意思，当调用该方法的时候，会将缓存区的内容刷新。。
+    close方法，在关闭的时候回进行一次flush。
+
+    区别：
+    1、flush刷新后还能再写。 close调用后就不能再写。
+    2、需要实时刷新
+
+5、字节流读中文。 首先字节流只读中文会出现问题。有可能读半个中文。
+    解决办法：
+    1、使用字符流。
+    2、将文件中所有字节，读到内存中，然后将内存中字节流转成字符串。
+
+    字节流在写中文的时候，需要将字符串转换成bytes。
+
+    字节流可以任意拷贝数据。
+
+6、字符流。 相当于字节流 + 编码表。
+
+    字符流的读写，实际上先读写字节流，然后将字节流转换成字符。
+
+    InputStreamReader、OutputStreamWriter。是FileReader、FileWriter的父类。
+
+    FileReader、FileWriter。继承关系。
+    BufferReader、BufferWriter。带缓冲区的。 其效率会更高。
+        br.readLine方法。不会读\r \n。
+        bw.write(String str)方法。 只会是一行，需要借助newLine()方法。
+    LineNumberReader继承BufferReader。 可以获取行号。
+
+
+    其内部也有相应的缓存区。
+
+    字符串用于只读或者只写的时候，会更好。不会出现半个汉字的情况。
+
+    字符流不能拷贝非纯文本文件。因为其内部先将字节转换成字符，然后将字符转换成字节，那么就有可能出现错误。
+
+7、装饰设计模式。
+
+8、多线程。
+
+    并行和并发。
+    并行是多个任务同时进行，多核cpu可以实现。
+    并发是一个cpu不断进行任务调度。
+    而我们常见的多线程就是并发执行。
+
+    同步和异步。
+    同步和异步是相对的，同步是按顺序执行。
+
+    多线程和异步的关系。异步是目的，多线程是手段，我们通过多线程来实现异步。而并行和并发表示当有多个线程的时候，其执行方式。
+
+    线程和进程：
+
+9、Thread。 实现Runnable接口
+
+    1、创建一个类继承Thread，重写run方法。
+        CustomThread ct = new CustomThread();
+        ct.start(); // start方法才是开启的本质。
+
+    2、创建类，实现Runnable接口。 重写run方法。
+        创建Thread（runnable）来获取Thread。然后调用start方法。
+
+    两种写法的匿名方法：
+    new Thread() {
+        @Override
+        public void run() {
+
+        }
+    }.start();
+
+    new Thread(new Runnable() {
+        @Override
+        public void run() {
+
+        }
+    }).start();
+
+    Thread常见方法：
+    getName, 获取线程名字。
+    setName, 设置线程名字。
+
+    Thread(String name), 直接给线程方式。
+
+    Thread.sleep(1000)， 静态方法，延时执行。
+
+    // 设置线程为守护线程。
+    该线程不会单独执行，其他线程执行结束，该线程自动退出。
+    setDaemon(true); 将某个线程设置为守护线程
+
+    t.join() 加入线程。 相当于提升线程的优先级。
+
+2.21
+1、线程同步。
+    1、给线程枷锁。
+        如果想要线程同步，那么对象应该是一样的。
+    synchronized(任意对象) {
+
+    }
+
+    2、同步方法。 同步方法的锁对象是this。
+    synchronized void lockMethod() {
+
+    }
+
+2、线程安全。
+
+3、设置线程优先级。 其实Thread和ios中DispatchQueue是一样的。
+    thread.setProperty
+
+    Thread.yield() 让出线程。
+
+4、单利。
+   直接使用
+   static CustomClass instance = new CustomClass();
+   这种写法有弊端： 因为CustomClass.instance = null； 可以进行设置。
+
+   通过封装的形式设计。
+   1、私有化构造方法。
+   private CustomClass() {}
+
+   2、私有静态变量
+   private static CustomClass instances = new CustomClass();
+
+   3、暴露单利方法。
+   public CustomClass getInstance() {
+    return instances;
+   }
+
+   在swift中要简单的一点。因为当我们设置为let的时候，程序员是不能进行赋值的。所以不用暴露方法。
+   1、私有化构造方法。
+   private init() {}
+
+   2、设置let类型的静态属性。
+   static let instance = CustomClass()
+
+   其实java有final关键字。
+   public final static CustomClass instances = new CustomClass();
+
+5、懒汉式，单利。
+    private CustomClass() {}
+    private static CustomClass instance;
+    public CustomClass getInstance() {
+        if(instance == null) instance = CustomClass();
+        return instances;
+    }
+
+    但这种写法，不是线程安全的。
+
+    饿汉式和懒汉式的区别。
+    饿汉式是控件换时间。
+    懒汉式是时间换控件。
+
+6、Runtime类。
+
+7、Timer。定时器。
+    需要搭配TimerTask使用。
+
+8、两个线程间的通信。
+    Object对象中有两个方法。wait和notify。
+    wait和sleep两者间的区别：
+    sleep，时间到后，自己解穴。
+    wait，需要别人解穴。
+
+    注意wait和notify是需要同一个对象调用的。
+
+9、ReentrantLock 互斥锁。 ios中，NSLock、NSCondition都属于互斥锁。
+       private ReentrantLock lock = new ReentrantLock();
+        private Condition c1 = lock.newCondition();
+        private Condition c2 = lock.newCondition();
+        private Condition c3 = lock.newCondition();
+
+        // 根据需要，c1.await(); c1.single(); 来锁和解锁。
+
+10、线程组。类似ios中group。 当创建线程的时候，可以设置线程组。
+    ThreadGroup tg = t1.getThreadGroup();
+    默认是main，主线程组。
+
+11、工厂模式。
+
+    工程方法模式。 简单的理解，就是创建多个工厂类，不同的工厂方法有不同的工厂方法。
+
+12、网络编程。
+    ipv4，有42亿个ip，11年已经用完了。
+    ipv6，8组，每组是4个16进制数。
+
+    端口：用来识别应用程序。
+
+    协议：

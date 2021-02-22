@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 
-import java.io.File;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 public class BottomNavigationViewActivity extends AppCompatActivity {
 
@@ -27,28 +29,19 @@ public class BottomNavigationViewActivity extends AppCompatActivity {
 
 
 
-        File file = new File(getFilesDir() + "/itcast");
-
         try {
+            BufferedInputStream bis = new BufferedInputStream(new FileInputStream(""));
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(""));
 
-            file.mkdirs();
-
-            file.renameTo(new File(getFilesDir() + "/itcast1"));
-
+            bis.close();
+            bos.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        try {
-            FileInputStream fis = new FileInputStream(file);
 
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
     }
-
 
 
 
