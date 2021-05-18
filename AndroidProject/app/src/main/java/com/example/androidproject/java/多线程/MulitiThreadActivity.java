@@ -107,6 +107,8 @@ public class MulitiThreadActivity extends AppCompatActivity {
 
         String name1 = tg1.getName();
         String name2 = tg2.getName();
+
+
     }
 
 

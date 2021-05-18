@@ -6,6 +6,7 @@
 
 3、java基础数据类型。byte、char、int、short、long、boolen、float、double。
     long a = 12345L。表示long类型需要用L，因为小写l太像1了。
+    后面要加f、l其主要原因是：java中，默认整数就是int类型，小数就是double类型。
 
 4、原码、补码和反码。
     因为计算机只有0和1。所以为了存储正负数，就将最高位作为符号位。
@@ -326,6 +327,7 @@
 
 
 3、基本数据类型包装类。 主要是为了处理基本数据类型不是对象问题。大部分是静态方法。
+
     int Integer, String 转 int，需要借助Integer对象。 而int转String，直接"" + 就可以， 也可以使用valueOf
         Integer i = 12; 基本数据类型的自动装箱。 直接使用new Integer(12)。 比较麻烦。
         int x = i + 12; 对象的自动拆箱。
